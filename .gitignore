@@ -1,3 +1,6 @@
-assets/
+uploads/
+resources/assets/
+protected/data/
 protected/runtime/
-themes/classic/views/
+.DS_Store
+Thumbs.db

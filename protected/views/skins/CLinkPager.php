@@ -1,0 +1,43 @@
+<?php
+return array(
+    'default' => array(
+        'header' => '',
+        'footer' => '',
+        'maxButtonCount' => 8,
+        'nextPageLabel' => '上一页',
+        'prevPageLabel' => '下一页',
+        'cssFile' => false,
+    ),
+    'classic' => array(
+        'header' => '',
+        'footer' => '',
+        'maxButtonCount' => 5,
+        'nextPageLabel' => '&gt;',
+        'prevPageLabel' => '&lt;',
+        'cssFile' => false,
+    ),
+    'mobile' => array(
+        'header' => '',
+        'footer' => '',
+        'maxButtonCount' => 3,
+        'nextPageLabel' => '&gt;',
+        'prevPageLabel' => '&lt;',
+        'firstPageLabel' => '&lt;&lt;',
+        'lastPageLabel' => '&gt;&gt;',
+        'cssFile' => false,
+        'hiddenPageCssClass' => 'disabled',
+        'selectedPageCssClass' => 'active',
+    ),
+    'admin' => array(
+        'header' => '',
+        'footer' => '',
+        'maxButtonCount' => 3,
+        'nextPageLabel' => '下页',
+        'prevPageLabel' => '上页',
+        'firstPageLabel' => '首页',
+        'lastPageLabel' => '尾页',
+        'cssFile' => false,
+        'hiddenPageCssClass' => 'disabled',
+        'selectedPageCssClass' => 'active',
+    ),
+);
