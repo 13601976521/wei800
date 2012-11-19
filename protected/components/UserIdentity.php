@@ -29,7 +29,6 @@ class UserIdentity extends CUserIdentity
 			$this->_id = $user->id;
 			$this->_name = $user->name;
 			$this->_email = $user->email;
-			$this->cacheUserData($user);
 		}
 		return !$this->errorCode;
 	}

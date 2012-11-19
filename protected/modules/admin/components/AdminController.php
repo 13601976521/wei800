@@ -1,7 +1,9 @@
 <?php
 /**
- * Controller is the customized base controller class.
- * All controller classes for this application should extend from this base class.
+ * @author chendong
+ *
+ * @property integer $uid
+ * @property AdminUser $user
  */
 class AdminController extends CController
 {
@@ -9,34 +11,18 @@ class AdminController extends CController
     public $title;
     public $breadcrumbs = array();
     
-    /**
-     * 当前登录用户的ID
-     * @var integer
-     */
-    public $uid;
-    
-    /**
-     * 当前登录用户
-     * @var AdminUser
-     */
-    public $user;
-    
-    /**
-     * 当前登录用户的资料
-     * @var UserProfile
-     */
-    public $profile;
-    
-    public function init()
+    public function getUid()
     {
-        parent::init();
-        $user = AdminUser::model()->findByPk(user()->id);
+        return (int)user()->id;
+    }
+    
+    public function getUser()
+    {
+        $user = AdminUser::model()->findByPk($this->getUid());
         if ($user === null)
             throw new CHttpException(500, '未找到用户');
         
-        $this->uid = $user->id;
-        $this->user = $user;
-        $this->profile = $user->profile;
+        return $user;
     }
     
 	public function setSiteTitle($text)
