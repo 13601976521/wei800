@@ -28,6 +28,7 @@ return array(
     'language' => 'zh_CN',
     'layout' => 'main',
     'timezone' => 'Asia/Shanghai',
+    'theme' => null,
 
     'import' => array(
 		'application.models.*',
@@ -92,6 +93,10 @@ return array(
             'basePath' => $params['resourceBasePath'] . 'assets',
             'baseUrl' => $params['resourceBaseUrl'] . 'assets',
         ),
+        'themeManager' => array(
+            'basePath' => BETA_WEBROOT . DS . '..' . DS . 'themes' . DS,
+            'baseUrl' => $params['themeResourceBaseUrl'],
+        ),
         'session' => array(
             'autoStart' => true,
             'cookieParams' => array(
@@ -109,16 +114,16 @@ return array(
             'defaultRoles' => array('member'),
         ),
         'urlManager' => array(
-            'urlFormat' => 'path',
+            'urlFormat' => 'get',
 		    'showScriptName' => false,
             'caseSensitive' => false,
             'cacheID' => 'cache',
             'rules' => array(
                 '' => 'site/index',
                 'p/<id:\d+>' => 'post/show',
+                'post/<_a>' => 'post/<_a>',
                 'wx/<id:\d+>' => 'weixin/index',
                 '<_a:(login|signup|logout)>' => 'site/<_a>',
-                'tag/<name:[\w\s\%\-\+\.]+>' => 'tag/posts',
             ),
         ),
     ),

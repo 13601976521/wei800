@@ -14,7 +14,7 @@ defined('DS') or define('DS', DIRECTORY_SEPARATOR);
  
 /**
  * This is the shortcut to Yii::app()
- * @return CApplication Yii::app()
+ * @return CWebApplication Yii::app()
  */
 function app()
 {
@@ -152,13 +152,10 @@ function user()
  */
 function tbu($url = null, $useDefault = true)
 {
-    if (empty(Yii::app()->theme))
-        return sbu($url);
+    if (empty(app()->theme)) return sbu($url);
     
-    static $themeBasePath;
-    static $themeBaseUrl;
-    $themeBasePath = rtrim(param('themeResourceBasePath'), DS) . DS . Yii::app()->theme->name . DS;
-    $filename = realpath($themeBasePath . $url);
+    static $themeBaseUrl = null;
+    $filename = realpath(app()->theme->basePath . DS . $url);
     if (file_exists($filename)) {
         $themeBaseUrl = rtrim(Yii::app()->theme->baseUrl, '/') . '/';
         return ($url === null) ? $themeBaseUrl : $themeBaseUrl . ltrim($url, '/');
@@ -168,6 +165,21 @@ function tbu($url = null, $useDefault = true)
     }
     else
         return 'javascript:void(0);';
+}
+
+function tbp($file)
+{
+    if (empty(app()->theme)) return sbp($file);
+    
+    $filepath = null;
+    $themeBasePath = rtrim(app()->theme->basePath, DS) . DS;
+    $filename = $themeBasePath . $file;
+    if (file_exists($filename))
+        $filepath = $filename;
+    elseif (file_exists(sbp($file)))
+        $filepath = sbp($file);
+
+    return $filepath;
 }
 
 /**
@@ -219,7 +231,7 @@ function sbp($file = null)
 {
     static $resourcePath = null;
     if ($resourcePath === null)
-        $resourcePath = rtrim(param('resourcePath'), DS) . DS;
+        $resourcePath = rtrim(param('resourceBasePath'), DS) . DS;
 
     return empty($file) ? $resourcePath : $resourcePath . ltrim($file, DS);
 }

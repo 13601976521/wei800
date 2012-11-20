@@ -1,29 +1,17 @@
 <?php
 class SiteController extends Controller
 {
-    public function filters()
-    {
-        return array(
-            array(
-                'COutputCache + index',
-                'duration' => 3600,
-            ),
-        );
-    }
-    
     public function actionIndex()
     {
-        $this->setSiteTitle();
-        $this->setPageKeyWords(array('微信公众号助手', '微信运营平台', '微信推广平台', '微信互推平台', '微信公众平台', '微信公众账号', '微信互推', '微信推广', '微信运营', '微信运营平台源码	', '公众平台消息接口', '微信公众平台消息接口开发'));
-        $this->setPageDescription('微800 最专业最权威功能最强大的微信公众账号运营及互推平台，集微信公众平台推广、营销及运营功能于一体，是商家官方微信公众账号运营的最佳助手。');
         $this->render('index');
+//         $this->redirect(aurl('site/login'));
     }
 
     public function actionLogin($url = '')
     {
         if (!user()->getIsGuest()) {
             $returnUrl = strip_tags(trim($url));
-            if (empty($returnUrl)) $returnUrl = CDBase::memberHomeUrl();
+            if (empty($returnUrl)) $returnUrl = CDBase::adminHomeUrl();
             request()->redirect($returnUrl);
             exit(0);
         }
@@ -41,7 +29,7 @@ class SiteController extends Controller
             if (empty($returnUrl))
                 $returnUrl = request()->getUrlReferrer();
             if (empty($returnUrl))
-                $returnUrl = CDBase::memberHomeUrl();
+                $returnUrl = CDBase::adminHomeUrl();
             $model->returnUrl = urlencode($returnUrl);
         }
         
@@ -54,7 +42,7 @@ class SiteController extends Controller
     public function actionSignup()
     {
         if (!user()->getIsGuest()) {
-            $this->redirect(CDBase::memberHomeUrl());
+            $this->redirect(CDBase::adminHomeUrl());
             exit(0);
         }
         

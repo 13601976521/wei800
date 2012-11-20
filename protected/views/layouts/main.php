@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="robots" content="all" />
-<link rel="stylesheet" type="text/css" href="<?php echo sbu('styles/cd-main.css?t=20121107003');?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo sbu('css/cd-main.css?t=20121107003');?>" />
 </head>
 <body class="wx-mobile">
 <div class="wx-container">
@@ -21,5 +21,5 @@
 
 <?php
 cs()->registerCoreScript('jquery');
-cs()->registerScriptFile(sbu('scripts/cd-main.js?t=20121105009'), CClientScript::POS_END);
+cs()->registerScriptFile(sbu('js/cd-main.js?t=20121105009'), CClientScript::POS_END);
 ?>

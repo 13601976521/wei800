@@ -4,7 +4,7 @@
 <meta charset="<?php echo app()->charset;?>" />
 <title><?php echo app()->name;?> - 管理中心</title>
 <link rel="stylesheet" type="text/css" href="<?php echo sbu('libs/bootstrap/css/bootstrap.min.css');?>" />
-<link rel="stylesheet" type="text/css" href="<?php echo sbu('styles/cd-admin.css?t=20121106001');?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo sbu('css/cd-admin.css?t=20121106001');?>" />
 </head>
 <body>
 <div class="navbar cd-navbar">
@@ -81,8 +81,8 @@
 <?php
 cs()->registerCoreScript('jquery');
 cs()->registerScriptFile(sbu('libs/bootstrap/js/bootstrap.min.js'), CClientScript::POS_END);
-cs()->registerScriptFile(sbu('scripts/cd-admin.js'), CClientScript::POS_END);
-cs()->registerScriptFile(sbu('scripts/cd-basic.js'), CClientScript::POS_END);
+cs()->registerScriptFile(sbu('js/cd-admin.js'), CClientScript::POS_END);
+cs()->registerScriptFile(sbu('js/cd-basic.js'), CClientScript::POS_END);
 cs()->registerScriptFile(sbu('libs/chosen/chosen.jquery.min.js'), CClientScript::POS_END);
 cs()->registerCssFile(sbu('libs/chosen/chosen.css'));
 ?>

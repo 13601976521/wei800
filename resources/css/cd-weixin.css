@@ -51,8 +51,8 @@ input[type="submit"].btn-block,input[type="reset"].btn-block,input[type="button"
 .alert-block>p,.alert-block>ul{margin-bottom:0;}
 .alert-block p+p{margin-top:5px;}
 
-.pull-right{float:right;}
-.pull-left{float:left;}
+.fright{float:right;}
+.fleft{float:left;}
 .hide{display:none;}
 .show{display:block;}
 .invisible{visibility:hidden;}
@@ -105,14 +105,9 @@ footer a {display:block; color:#CCC; text-align:center;}
 .more-weixin li {display:block; float:left; text-align:center; width:25%; margin:0 0 7px; cursor:pointer;}
 .more-weixin li h4 {font-weight:normal; font-size:12px; line-height:18px; color:#555555; margin:0 5px; white-space:nowrap; overflow:hidden;}
 
-.btn-focus {display:block; background:url(../images/focusbtn_bg.png) no-repeat center center; background-size:100% 100%; position:relative; height:64px; padding:0 15px;}
+.btn-focus {display:block; background:url(http://t2.qpic.cn/mblogpic/426c637092f06ffde172/2000) no-repeat center center; background-size:100% 100%; position:relative; height:64px; padding:0 15px;}
 .btn-focus .avatar {top:5px; left:10px; position:absolute;}
 .btn-focus .wxname {top:10px; left:75px; position:absolute; margin:0; font-size:14px; font-weight:bold; color:#555;}
 .btn-focus .wxid {top:35px; left:75px; position:absolute; margin:0; font-size:12px; color:gray;}
 .btn-focus b {top:20px; right:10px; position:absolute; font-size:14px; color:#DFDFDF;}
-
-
-
-
-
 

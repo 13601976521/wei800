@@ -7,7 +7,6 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="robots" content="all" />
-<link rel="stylesheet" type="text/css" href="<?php echo sbu('styles/cd-wx.css?t=20121119001');?>" />
 </head>
 <body class="wx-mobile">
 <div class="wx-wrapper">
@@ -18,8 +17,3 @@
 </footer>
 </body>
 </html>
-
-<?php
-cs()->registerCoreScript('jquery');
-cs()->registerScriptFile(sbu('scripts/cd-wx.js?t=20121119001'), CClientScript::POS_END);
-?>
