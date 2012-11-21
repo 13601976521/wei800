@@ -64,8 +64,8 @@ return array(
         ),
         'user' => array(
             'allowAutoLogin' => true,
-            'loginUrl' => array('site/login'),
-            'returnUrl' => array('site/index')
+            'loginUrl' => array('/site/login'),
+            'returnUrl' => array('/site/index')
         ),
         'db' => array(
             'class' => 'CDbConnection',
@@ -114,7 +114,7 @@ return array(
             'defaultRoles' => array('member'),
         ),
         'urlManager' => array(
-            'urlFormat' => 'get',
+            'urlFormat' => $params['url_format'],
 		    'showScriptName' => false,
             'caseSensitive' => false,
             'cacheID' => 'cache',

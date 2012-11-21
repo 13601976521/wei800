@@ -5,7 +5,7 @@ class PostController extends AdminController
     {
         $id = (int)$id;
         if ($id > 0)
-            $model = AdminPost::model()->findByPk($id, 'user_id = :userid', array(':userid'=>$this->uid));
+            $model = AdminPost::model()->findByPk($id, 'user_id = :userid', array(':userid'=>$this->userID));
         else
             $model = new AdminPost();
         
@@ -83,7 +83,7 @@ class PostController extends AdminController
     
     private function onePostStats($id)
     {
-        $post = AdminPost::model()->findByPk($id, 'user_id = :userid', array(':userid'=>$this->uid));
+        $post = AdminPost::model()->findByPk($id, 'user_id = :userid', array(':userid'=>$this->userID));
         if ($post === null)
             throw new CHttpException(404, '此文章内容不存在');
         

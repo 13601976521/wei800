@@ -58,9 +58,9 @@
             <?php echo CHtml::activeFileField($model, 'qrcode');?>
             <?php if($model->hasErrors('qrcode')):?><span class="help-inline"><?php echo $model->getError('qrcode');?></span><?php endif;?>
             <?php echo $model->qrcodeImage;?>
+            <p class="alert alert-warning">头像、二维码图片请确保图片大小不超过1M，图片宽度和高度都不超过1024px，推荐使用公众平台上现有的图片。</p>
         </div>
     </div>
-    <div class="alert alert-warning input-tip">头像、二维码图片请确保图片大小不超过1M，图片宽度和高度都不超过1024px，推荐使用公众平台上现有的图片。</div>
     <div class="form-actions">
         <a class="btn" href="<?php echo $model->listUrl;?>">返回列表</a>
         <input type="submit" value="提交" class="btn btn-primary" />

@@ -5,10 +5,14 @@ class AdweixinController extends AdminController
     {
         $id = (int)$id;
         $id = (int)$id;
-        if ($id > 0)
-            $model = AdminAdWeixin::model()->findByPk($id, 'user_id = :userid', array(':userid'=>$this->uid));
-        else
+        if ($id > 0) {
+            $model = AdminAdWeixin::model()->findByPk($id, 'user_id = :userid', array(':userid'=>$this->userID));
+            $this->title = '修改推广微信账号：' . $model->wxname;
+        }
+        else {
             $model = new AdminAdWeixin();
+            $this->title = '添加推广微信账号';
+        }
         
         if ($model === null)
             throw new CHttpException(404, '该推广账号不存在');
@@ -27,7 +31,6 @@ class AdweixinController extends AdminController
         }
 
         $this->channel = 'adweixin_create';
-        $this->title = '添加推广微信号';
         $this->render('create', array(
             'model' => $model,
         ));
@@ -48,7 +51,7 @@ class AdweixinController extends AdminController
     {
         $id = (int)$id;
         if ($id > 0)
-            $model = AdminAdWeixin::model()->findByPk($id, 'user_id = :userid', array(':userid'=>$this->uid));
+            $model = AdminAdWeixin::model()->findByPk($id, 'user_id = :userid', array(':userid'=>$this->userID));
         
         if ($model === null)
             throw new CHttpException(500, '非法请求');

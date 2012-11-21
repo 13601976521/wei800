@@ -7,19 +7,29 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="robots" content="all" />
-<link rel="stylesheet" type="text/css" href="<?php echo sbu('css/cd-main.css?t=20121107003');?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo sbu('libs/bootstrap/css/bootstrap.min.css');?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo sbu('css/cd-main.css?t=20121121001');?>" />
 </head>
-<body class="wx-mobile">
-<div class="wx-container">
+<body>
+<div id="header" class="clearfix">
+    <div class="cd-wrapper">
+        <h2>微800 - 专业微信运营平台</h2>
+    </div>
+</div>
+
+<div class="cd-wrapper clearfix">
 <?php echo $content;?>
 </div>
-<footer>
-    <a href="<?php echo CDBase::siteHomeUrl();?>">本页面由&nbsp;<?php echo app()->name;?>&nbsp;运营平台生成</a>
-</footer>
+
+<div id="footer" class="acenter clearfix">
+    <a href="http://www.weixin800.com/">Powered by 微800 专业微信运营平台</a>&nbsp;&nbsp;
+    <?php echo param('beian_code');?>
+</div>
 </body>
 </html>
 
 <?php
 cs()->registerCoreScript('jquery');
-cs()->registerScriptFile(sbu('js/cd-main.js?t=20121105009'), CClientScript::POS_END);
+cs()->registerScriptFile(sbu('js/cd-basic.js?t=20121121001'), CClientScript::POS_END);
+cs()->registerScriptFile(sbu('js/cd-main.js?t=20121121001'), CClientScript::POS_END);
 ?>

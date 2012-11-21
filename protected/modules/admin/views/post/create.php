@@ -49,9 +49,9 @@
         <div class="controls">
             <?php echo CHtml::activeTextField($model, 'ad_line_count', array('class'=>'span2', 'placeholder'=>'单行展示数量'));?>
             <?php if($model->hasErrors('ad_line_count')):?><span class="help-inline"><?php echo $model->getError('ad_line_count');?></span><?php endif;?>
+            <p class="help-block alert alert-block">此行数是指以并列4个为一行方式显示的行数，并不是一行显示一个的行数。<br /><span class="cred">注：此项设置只有在推广账号数大于4的时候才会有效，小于4个会全部以单行方式显示</span></p>
         </div>
     </div>
-    <div class="alert alert-block input-tip">此行数是指以并列4个为一行方式显示的行数，并不是一行显示一个的行数。<br /><span class="cred">注：此项设置只有在推广账号数大于4的时候才会有效，小于4个会全部以单行方式显示</span></div>
     <div class="form-actions">
         <input type="submit" value="提交" class="btn btn-primary" />
         <a class="btn" href="<?php echo $model->listUrl;?>">返回列表</a>
@@ -87,13 +87,11 @@ $(function(){
 	    $('#adaccounts').val(adaccounts);
 	});
 	
-	<?php if ($model->type_id == POST_TYPE_ONE):?>
     KindEditor.ready(function(K) {
-    	KEConfig.weixin.cssPath = ['<?php echo sbu('styles/cd-wx.css');?>'];
+    	KEConfig.weixin.cssPath = ['<?php echo sbu('css/cd-weixin.css');?>'];
     	KEConfig.weixin.uploadJson = '<?php echo aurl('upload/image');?>';
     	var CDContent = K.create('#post-content', KEConfig.weixin);
     });
-    <?php endif;?>
 });
 </script>
 
@@ -101,10 +99,8 @@ $(function(){
 <?php
 cs()->registerScriptFile(sbu('libs/chosen/chosen.jquery.min.js'), CClientScript::POS_END);
 cs()->registerCssFile(sbu('libs/chosen/chosen.css'));
-if ($model->type_id == POST_TYPE_ONE) {
-    cs()->registerScriptFile(sbu('libs/kindeditor/kindeditor-min.js'), CClientScript::POS_END);
-    cs()->registerScriptFile(sbu('libs/kindeditor/config.js'), CClientScript::POS_END);
-}
+cs()->registerScriptFile(sbu('libs/kindeditor/kindeditor-min.js'), CClientScript::POS_END);
+cs()->registerScriptFile(sbu('libs/kindeditor/config.js'), CClientScript::POS_END);
 ?>
 
 

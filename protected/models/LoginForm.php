@@ -94,7 +94,7 @@ class LoginForm extends CFormModel
 	    $user->email = $this->email;
 	    $user->name = $this->username;
 	    $user->password = $this->password;
-	    $user->state = (param('user_required_admin_verfiy') || param('用户注册是否需要管理员审核')) ? USER_STATE_UNVERIFY : USER_STATE_ENABLED;
+	    $user->state = (param('user_required_admin_verfiy') || param('user_required_email_verfiy')) ? USER_STATE_UNVERIFY : USER_STATE_ENABLED;
 	    $user->encryptPassword();
 	    $result = $user->save();
 

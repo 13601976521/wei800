@@ -1,0 +1,37 @@
+@CHARSET "UTF-8";
+
+.fleft {float:left;}
+.fright {float:right;}
+.aleft {text-align:left;}
+.aright {text-align:right;}
+.acenter {text-align:center;}
+.clear {display:block; height:0; width:100%; font-size:0px; clear:both;}
+
+.cd-wrapper {width:960px; margin:0 auto;}
+.cd-container {width:640px;}
+.cd-sidebar {width:300px;}
+
+#header {margin-bottom:15px; background:#3F3F3F; color:white;}
+#footer {padding:10px; background:black; color:#DFDFDF; font-size:12px;}
+#footer a {color:#DFDFDF;}
+#footer a:hover {color:white;}
+
+.login-form .control-label {width:100px;}
+.login-form .controls {margin-left:120px;}
+.login-form .suggestion {display:block; font-size:12px; color:#9F9F9F; margin-top:3px;}
+.quick-login-signup {margin-top:90px; margin-left:20px;}
+.quick-login-signup strong {margin:0 2px;}
+
+/* error page */
+.cd-error {color:gray;}
+.cd-error .error-icon {font-size:200px; color:#BFBFBF; margin-right:20px; line-height:300px; font-weight:bold;}
+.cd-error .error-detail {padding:40px 40px 0 0; line-height:24px;}
+
+/* friend links */
+.cd-links li {float:left; margin:5px 6px; width:93px; overflow:hidden;}
+.cd-links li a {font-size:12px;}
+.cd-links li img {width:81px; height:31px;}
+
+
+
+

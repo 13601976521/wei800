@@ -4,10 +4,14 @@ class WeixinController extends AdminController
     public function actionCreate($id = 0)
     {
         $id = (int)$id;
-        if ($id > 0)
-            $model = AdminWeixin::model()->findByPk($id, 'user_id = :userid', array(':userid'=>$this->uid));
-        else
+        if ($id > 0) {
+            $model = AdminWeixin::model()->findByPk($id, 'user_id = :userid', array(':userid'=>$this->userID));
+            $this->title = '修改我的公众账号：' . $model->wxname;
+        }
+        else {
             $model = new AdminWeixin();
+            $this->title = '添加我的公众账号';
+        }
         
         if ($model === null)
             throw new CHttpException(404, '该公众账号不存在');
@@ -27,7 +31,6 @@ class WeixinController extends AdminController
         }
 
         $this->channel = 'weixin_create';
-        $this->title = '提交我的公众账号';
         $this->render('create', array(
             'model' => $model,
         ));

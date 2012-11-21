@@ -12,7 +12,7 @@ class CDCaptchaAction extends CCaptchaAction
         $length = rand($this->minLength, $this->maxLength);
         $letters = '0123456789';
         for ($i = 0; $i < $length; ++ $i) {
-            $code .= $letters[rand(0, 9)];
+            $code .= $letters[mt_rand(0, 9)];
         }
         return $code;
     }
@@ -36,7 +36,7 @@ class CDCaptchaAction extends CCaptchaAction
             $foreColor = imagecolorallocate($image, mt_rand(0, 255), mt_rand(0, 255), mt_rand(0, 255));
             $angle = mt_rand(- 20, 20);
             $x = 5 + $fontSize * $i;
-            $y = $this->height;
+            $y = $this->height / 2 + $fontSize / 2;
             imagettftext($image, $fontSize, $angle, $x, $y, $foreColor, $this->fontFile, $code[$i]);
             imageline($image, mt_rand(0, $this->width), mt_rand(0, $this->height), mt_rand(0, $this->width), mt_rand(0, $this->height), $foreColor);
         }

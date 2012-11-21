@@ -41,7 +41,6 @@ class ProfileController extends AdminController
         $this->breadcrumbs[] = '更新信息';
         $this->render('edit', array(
             'model' => $model,
-            'userStates' => $userStates,
         ));
     }
     
@@ -74,8 +73,7 @@ class ProfileController extends AdminController
 
     public function actionInfo()
     {
-        $uid = (int)user()->id;
-        $model = AdminUser::model()->findByPk($uid);
+        $model = AdminUser::model()->findByPk($this->userID);
         if ($model === null)
             throw new CHttpException(404, '用户不存在');
         

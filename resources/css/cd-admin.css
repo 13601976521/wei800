@@ -15,7 +15,7 @@
 .cd-sidebar {width:150px; margin-top:52px; z-index:998;}
 .cd-entry {margin-left:165px; margin-top:52px;}
 
-.quick-nav {border:1px solid #E5E5E5; padding-top:10px; padding-bottom:10px; -webkit-border-radius:6px; -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, .065);}
+.quick-nav {border:1px solid rgba(0, 0, 0, 0.2); border:1px solid #CCC; padding-top:10px; padding-bottom:10px; -webkit-border-radius:6px; -webkit-box-shadow:0 5px 10px rgba(0, 0, 0, 0.2); box-shadow:0 5px 10px rgba(0, 0, 0, 0.2); background-clip:padding-box; -webkit-background-clip:padding-box;}
 .quick-nav > li > a {border:0; padding:5px 15px;}
 .quick-nav > li > a:hover {border:1px solid #E5E5E5; padding:4px 14px;}
 .quick-nav > .active > a:hover {border:0; padding:5px 15px;}
@@ -24,7 +24,7 @@
 .quick-nav .active .icon-chevron-right, .cd-navbar .active .icon-chevron-right {display:inline-block; opacity:1; margin-top:2px; margin-right:-5px;}
 
 .changelog {font-size:14px;}
-.changelog li {margin:5px 0; line-height:28px;}
+.changelog li {margin:6px 0;}
 
 table .column-label {width:150px; text-align:right;}
 .table th.span-short-time, .table td.span-short-time {float:none; width:80px; margin-left:0;}
@@ -41,3 +41,6 @@ form .input-tip {margin-left:120px;}
 #qrcode-modal .qrcode p {margin-top:10px;}
 
 form.table-header {margin-bottom:10px;}
+.total-stats {margin-bottom:20px;}
+.popover.static {display:inline-block; position:static;}
+.popover.popover-block {width:auto; display:block;}

@@ -30,13 +30,12 @@ return array(
     'formatTime' => 'H:i:s',
     'formatShortTime' => 'H:i',
         
+    'url_format' => 'get',
+        
     // 推广账号默认单行显示数量
     'ad_weixin_default_line_show_count' => 0,
     
-    'post_summary_len' => 200,
-    
     // 简述中可以使用的html标签
-    'summaryHtmlTags' => '<b><strong><img><p>',
     'mobileSummaryHtmlTags' => '<img>',
     
     // default param and value

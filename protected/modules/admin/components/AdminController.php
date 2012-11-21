@@ -5,20 +5,15 @@
  * @property integer $uid
  * @property AdminUser $user
  */
-class AdminController extends CController
+class AdminController extends Controller
 {
     public $channel;
     public $title;
     public $breadcrumbs = array();
     
-    public function getUid()
-    {
-        return (int)user()->id;
-    }
-    
     public function getUser()
     {
-        $user = AdminUser::model()->findByPk($this->getUid());
+        $user = AdminUser::model()->findByPk($this->getUserID());
         if ($user === null)
             throw new CHttpException(500, '未找到用户');
         

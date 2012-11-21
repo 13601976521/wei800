@@ -13,7 +13,7 @@
 <?php echo $content;?>
 </div>
 <footer>
-    <a href="<?php echo aurl('mobile/intro');?>">本页面由&nbsp;<?php echo app()->name;?>&nbsp;运营平台生成</a>
+    <a href="http://www.weixin800.com/static/intro" target="_blank">本页面由&nbsp;<?php echo app()->name;?>&nbsp;运营平台生成</a>
 </footer>
 </body>
 </html>

@@ -3,8 +3,8 @@ class SiteController extends Controller
 {
     public function actionIndex()
     {
-        $this->render('index');
-//         $this->redirect(aurl('site/login'));
+//         $this->render('index');
+        $this->redirect(CDBase::loginUrl());
     }
 
     public function actionLogin($url = '')
@@ -19,10 +19,7 @@ class SiteController extends Controller
         $model = new LoginForm('login');
         if (request()->getIsPostRequest() && isset($_POST['LoginForm'])) {
             $model->attributes = $_POST['LoginForm'];
-            if ($model->validate() && $model->login())
-                ;
-            else
-                $model->captcha = '';
+            $model->validate() && $model->login();
         }
         else {
             $returnUrl = strip_tags(trim($url));
@@ -46,14 +43,10 @@ class SiteController extends Controller
             exit(0);
         }
         
-        
         $model = new LoginForm('signup');
         if (request()->getIsPostRequest() && isset($_POST['LoginForm'])) {
             $model->attributes = $_POST['LoginForm'];
-            if ($model->validate() && $model->signup())
-                ;
-            else
-                $model->captcha = '';
+            $model->validate() && $model->signup();
         }
         
         cs()->registerMetaTag('noindex, follow', 'robots');

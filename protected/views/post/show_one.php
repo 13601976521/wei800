@@ -1,5 +1,5 @@
 <div class="wx-container">
-    <h1 class="title"><?php echo $title;?></h1>
+    <h1 class="title"><?php echo $post->title;?></h1>
     <a data-action="wxfollow" class="btn-focus" href="javascript:void(0);" data-wxid="<?php echo $weixin->original_wxid;?>" data-id="<?php echo $post->id;?>">
         <div class="avatar"><?php echo $weixin->circleAvatarImage;?></div>
         <div class="wxname"><?php echo $weixin->wxname;?></div>
@@ -7,7 +7,7 @@
         <b>&gt;</b>
     </a>
     
-    <div class="cd-post-content"><?php echo $content;?></div>
+    <div class="cd-post-content"><?php echo $post->filterContent;?></div>
     
     <div class="button-row">
         <button type="button" data-action="wxshare" class="btn btn-block btn-large" type="button">分享至朋友圈</button>

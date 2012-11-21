@@ -35,9 +35,9 @@
             <?php echo CHtml::activeFileField($model, 'avatar');?>
             <?php if($model->hasErrors('avatar')):?><span class="help-inline"><?php echo $model->getError('avatar');?></span><?php endif;?>
             <?php echo $model->avatarImage;?>
+            <p class="alert alert-warning">头像图片大小不超过1M，图片宽度和高度都不超过1024px，推荐使用公众平台上现有的图片。</p>
         </div>
     </div>
-    <div class="alert alert-warning input-tip">头像图片大小不超过1M，图片宽度和高度都不超过1024px，推荐使用公众平台上现有的图片。</div>
     <div class="control-group <?php if($model->hasErrors('desc')) echo 'error';?>">
         <?php echo CHtml::activeLabel($model, 'desc', array('class'=>'control-label'));?>
         <div class="controls">
