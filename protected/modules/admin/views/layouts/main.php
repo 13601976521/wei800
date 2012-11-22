@@ -36,6 +36,12 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">设置<b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        <li class="nav-header">系统设置</li>
+                        <?php foreach ($labels = AdminUserConfig::categoryLabels() as $id => $text):?>
+                        <li <?php if ($this->channel == $id) echo 'class="active"';?>><a href="<?php echo url('admin/config/view', array('cid'=>$id));?>"><i class="icon-chevron-right"></i><?php echo $text;?></a></li>
+                        <?php endforeach;?>
+                        <li class="nav-header">模板设置</li>
+                        <li <?php if ($this->channel == 'theme') echo 'class="active"';?>><a href="<?php echo url('admin/theme/select');?>"><i class="icon-chevron-right"></i>模板选择</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">

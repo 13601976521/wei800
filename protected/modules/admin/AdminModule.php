@@ -19,16 +19,38 @@ class AdminModule extends CWebModule
 			'admin.components.*',
 		));
 		
-		$params = require(ADMIN_MODULE_ROOT . 'config' . DS . 'params.php');
-
-		$userID = (int)user()->id;
-		$userCachefile = AdminUserConfig::cacheFilename($userID);
-		if (file_exists($userCachefile)) {
-		    $customSetting = require($userCachefile);
-		    $params = array_merge($params, $customSetting);
-		}
-		app()->params->mergeWith($params);
+		self::mergeParams();
 	}
+	
+	public static function mergeParams()
+	{
+	    $params = require(ADMIN_MODULE_ROOT . 'config' . DS . 'params.php');
+	    
+	    $cachefile = AdminConfig::cacheFilename();
+	    if (file_exists($cachefile)) {
+	        $customSetting = require($cachefile);
+	        $params = array_merge($params, $customSetting);
+	    }
+	    app()->params->mergeWith($params);
+	}
+	
+	/**
+	 * 多用户方法
+	 */
+	/*
+	public static function mergeParams()
+	{
+	    $params = require(ADMIN_MODULE_ROOT . 'config' . DS . 'params.php');
+	    
+	    $userID = (int)user()->id;
+	    $userCachefile = AdminUserConfig::cacheFilename($userID);
+	    if (file_exists($userCachefile)) {
+	        $customSetting = require($userCachefile);
+	        $params = array_merge($params, $customSetting);
+	    }
+	    app()->params->mergeWith($params);
+	}
+	*/
 
 	public function beforeControllerAction($controller, $action)
 	{

@@ -4,8 +4,8 @@
     <?php echo user()->getFlash('save_config_success');?>
 </div>
 <?php endif;?>
-<h4><?php echo $this->title;?></h4>
-<table class="table table-striped table-bordered beta-config-table">
+<div class="table-title"><?php echo $this->title;?></div>
+<table class="table table-striped table-bordered config-table">
     <thead>
         <tr>
             <th class="span1 align-center">ID</th>
@@ -28,5 +28,8 @@
             <td>&nbsp;</td>
         </tr>
         <?php endforeach;?>
+        <?php if (count($models) == 0):?>
+        <tr><td class=ac colspan="5">此分类还没有配置条目</td></tr>
+        <?php endif;?>
     </tbody>
 </table>

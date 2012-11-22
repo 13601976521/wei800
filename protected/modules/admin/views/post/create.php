@@ -30,9 +30,6 @@
             <?php if($model->hasErrors('content')):?><p class="help-block"><?php echo $model->getError('content');?></p><?php endif;?>
         </div>
     </div>
-    <?php if ($model->type_id == POST_TYPE_GROUP):?>
-    <div class="alert alert-warning upload-tip">如果您要添加的内容类型为“文章列表”，请将各文章ID写在内容中，多个ID用英文半角逗号分隔。</div>
-    <?php endif;?>
     <div class="form-actions">
         <input type="submit" value="提交" class="btn btn-primary" />
         <a class="btn" href="<?php echo $model->listUrl;?>">返回列表</a>

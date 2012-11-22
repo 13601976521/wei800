@@ -24,4 +24,21 @@ class AdminController extends Controller
 	{
 	    $this->pageTitle = $text . '_' . app()->name;
 	}
+
+	public static function themeScreens()
+	{
+	    $data = array();
+	    $names = tm()->getThemeNames();
+	    foreach ($names as $name) {
+	        $resourcePath = tm()->getTheme($name)->getBasePath() . DS . 'resources';
+	        $assetsPath = realpath(am()->getPublishedPath($resourcePath));
+	        if ($assetsPath === false)
+	            $assetsUrl = am()->publish($resourcePath);
+	        else
+	            $assetsUrl = am()->getPublishedUrl($resourcePath);
+	        $data[$name] = $assetsUrl . '/screenshoot.png';
+	    }
+	
+	    return $data;
+	}
 }

@@ -1,8 +1,8 @@
 <div class="table-title"><?php echo $this->title;?></div>
-<form class="form-inline table-header" action="<?php echo aurl('admin/post/list'); ?>" method="get">
+<?php echo CHtml::form('', 'get', array('class'=>'form-inline table-header'));?>
     <?php echo CHtml::dropDownList('wxid', $wxid, $weixins, array('prompt'=>'所有账号', 'id'=>'weixinid'));?>
     <input type="submit" value="搜索" class="btn btn-mini2 btn-primary" />
-</form>
+<?php echo CHtml::endForm();?>
 <table class="table table-striped table-bordered cd-list-table">
     <thead>
         <tr>

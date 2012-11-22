@@ -11,3 +11,7 @@ CDAdmin.changeWeixinState = function(url, success){
 	
 	success && jqXhr.done(success);
 };
+
+$(function(){
+	$('.alert').alert();
+});

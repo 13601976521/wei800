@@ -1,5 +1,5 @@
 <?php
-class AdminUserConfig extends UserConfig
+class AdminConfig extends Config
 {
     
     const CATEGORY_SYSTEM_SITE = 100;
@@ -10,7 +10,7 @@ class AdminUserConfig extends UserConfig
     
     /**
      * Returns the static model of the specified AR class.
-     * @return AdminUserConfig the static model class
+     * @return AdminConfig the static model class
      */
     public static function model($className=__CLASS__)
     {
@@ -27,50 +27,35 @@ class AdminUserConfig extends UserConfig
         );
     }
     
-    public function flushConfig()
+    public static function flushAllConfig()
     {
-        return self::flushAllConfig($this->user_id);
-    }
-    
-    public static function flushAllConfig($userID)
-    {
-        $userID = (int)$userID;
-        if ($userID === 0) return false;
-        
         $rows = app()->getDb()->createCommand()
             ->select(array('config_name', 'config_value'))
-            ->from(TABLE_USER_CONFIG)
-            ->where('user_id = :userid', array(':userid' => $userID))
+            ->from(TABLE_CONFIG)
             ->queryAll();
         
         if (empty($rows)) return false;
         
         $rows = CHtml::listData($rows, 'config_name', 'config_value');
         $data = "<?php\nreturn " . var_export($rows, true) . ';';
-        $filename = self::cacheFilename($userID);
+        $filename = self::cacheFilename();
         return ($filename === false) ? false : file_put_contents($filename, $data);
     }
     
-    public static function cacheFilename($userID)
+    public static function saveConfig($name, $value)
     {
-        $userID = (int)$userID;
-        if ($userID === 0) return false;
-        
-        $filename = dp(sprintf('user_config_%d.php', $userID));
-        return $filename;
-    }
-    
-    public static function saveUserConfig($userID, $name, $value)
-    {
-        $userID = (int)$userID;
-        $attributes = array('user_id'=>$userID, 'config_name'=>$name);
-        $model = self::model()->findByAttributes($attributes);
+        $model = self::model()->findByAttributes(array('config_name'=>$name));
         if ($model === null) return false;
         
         $model->config_value = $value;
         $result = $model->save(true, array('config_value'));
-        $result && $model->flushConfig();
+        $result && self::flushAllConfig();
         return $result;
+    }
+    
+    public static function cacheFilename()
+    {
+        return dp(param('custom_config_filename'));
     }
 
     protected function beforeDelete()

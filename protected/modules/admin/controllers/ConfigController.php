@@ -1,20 +1,20 @@
 <?php
 class ConfigController extends AdminController
 {
-    public function actionView($categoryid)
+    public function actionView($cid)
     {
-        $categoryid = (int)$categoryid;
+        $cid = (int)$cid;
         $cmd = app()->getDb()->createCommand()
-            ->from(AdminConfig::model()->tableName())
+            ->from(TABLE_USER_CONFIG)
             ->order('id asc')
-            ->where('category_id = :categoryid', array(':categoryid' => $categoryid));
+            ->where('category_id = :cid', array(':cid' => $cid));
         $rows = $cmd->queryAll();
         
-        $labels = AdminConfig::categoryLabels();
-        $this->title = '查看配置参数&nbsp;-&nbsp;' . $labels[$categoryid];
+        $labels = AdminUserConfig::categoryLabels();
+        $this->title = '查看配置参数&nbsp;-&nbsp;' . $labels[$cid];
         $this->render('list', array(
-            'models'=>$rows,
-            'categoryid' => $categoryid,
+            'models' => $rows,
+            'categoryid' => $cid,
         ));
     }
     

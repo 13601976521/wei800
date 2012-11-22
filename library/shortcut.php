@@ -259,7 +259,7 @@ function sbu($url = null)
  */
 function sp()
 {
-    return Yii::app()->getStatePersister();
+    return app()->getStatePersister();
 }
 
 /**
@@ -268,7 +268,25 @@ function sp()
  */
 function sm()
 {
-    return Yii::app()->getSecurityManager();
+    return app()->getSecurityManager();
+}
+
+/**
+ * This is the shortcut to Yii::app()->getSecurityManager().
+ * @return CThemeManager
+ */
+function tm()
+{
+    return app()->getThemeManager();
+}
+
+/**
+ * This is the shortcut to Yii::app()->getSecurityManager().
+ * @return CAssetManager
+ */
+function am()
+{
+    return app()->getAssetManager();
 }
 
 /**
