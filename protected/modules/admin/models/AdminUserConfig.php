@@ -1,11 +1,11 @@
 <?php
-class AdminConfig extends Config
+class AdminUserConfig extends UserConfig
 {
     const TYPE_SYSTEM = 0;
     const TYPE_CUSTOM = 1;
     
     const CATEGORY_CUSTOM = 1;
-    
+
     const CATEGORY_SYSTEM = 10;
     const CATEGORY_SYSTEM_SITE = 11;
     const CATEGORY_SYSTEM_CACHE = 13;
@@ -14,12 +14,6 @@ class AdminConfig extends Config
     const CATEGORY_DISPLAY = 20;
     const CATEGORY_DISPLAY_TEMPLATE = 21;
     const CATEGORY_DISPLAY_UI = 22;
-    
-    const CATEGORY_SNS = 30;
-    const CATEGORY_SNS_INTERFACE = 31;
-    const CATEGORY_SNS_STATS = 32;
-    const CATEGORY_SNS_TEMPLATE = 33;
-    
     
     /**
      * Returns the static model of the specified AR class.
@@ -49,24 +43,42 @@ class AdminConfig extends Config
         );
     }
     
-    public static function flushAllConfig()
+    public function flushConfig()
     {
+        return self::flushAllConfig($this->user_id);
+    }
+    
+    public static function flushAllConfig($userID)
+    {
+        $userID = (int)$userID;
+        if ($userID === 0) return false;
+        
         $rows = app()->getDb()->createCommand()
             ->select(array('config_name', 'config_value'))
-            ->from(TABLE_CONFIG)
+            ->from(TABLE_USER_CONFIG)
+            ->where('user_id = :userid', array(':userid' => $userID))
             ->queryAll();
         
         if (empty($rows)) return false;
         
         $rows = CHtml::listData($rows, 'config_name', 'config_value');
         $data = "<?php\nreturn " . var_export($rows, true) . ';';
-        $filename = dp('setting.config.php');
-        return file_put_contents($filename, $data);
+        $filename = self::cacheFilename($userID);
+        return ($filename === false) ? false : file_put_contents($filename, $data);
+    }
+    
+    public static function cacheFilename($userID)
+    {
+        $userID = (int)$userID;
+        if ($userID === 0) return false;
+        
+        $filename = dp(sprintf('user_config_%d.php', $userID));
+        return $filename;
     }
 
     protected function beforeDelete()
     {
-        throw new CException(t('system_config_is_not_allowed_deleted'));
+        throw new CException('系统参数不允许删除');
     }
 }
 

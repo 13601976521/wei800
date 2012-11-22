@@ -6,8 +6,9 @@ define('TABLE_POST', '{{post}}');
 define('TABLE_POST_WEIXIN', '{{post_weixin}}');
 define('TABLE_COMMENT', '{{comment}}');
 define('TABLE_CONFIG', '{{config}}');
-define('TABLE_WEIXIN', '{{weixin}}');
 define('TABLE_USER', '{{user}}');
+define('TABLE_USER_CONFIG', '{{user_config}}');
+define('TABLE_WEIXIN', '{{weixin}}');
 define('TABLE_ADWEIXIN', '{{adweixin}}');
 
 /* comment state */

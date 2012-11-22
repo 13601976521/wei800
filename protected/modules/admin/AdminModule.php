@@ -1,5 +1,7 @@
 <?php
 
+define('ADMIN_MODULE_ROOT', dirname(__FILE__) . DS);
+
 class AdminModule extends CWebModule
 {
 	public function init()
@@ -12,13 +14,20 @@ class AdminModule extends CWebModule
 	    
 	    app()->errorHandler->errorAction = 'admin/default/error';
 	    
-	    $params = require(dirname(__FILE__) . DS . 'config' . DS . 'params.php');
-	    Yii::app()->params->mergeWith($params);
-	    
 		$this->setImport(array(
 			'admin.models.*',
 			'admin.components.*',
 		));
+		
+		$params = require(ADMIN_MODULE_ROOT . 'config' . DS . 'params.php');
+
+		$userID = (int)user()->id;
+		$userCachefile = AdminUserConfig::cacheFilename($userID);
+		if (file_exists($userCachefile)) {
+		    $customSetting = require($userCachefile);
+		    $params = array_merge($params, $customSetting);
+		}
+		app()->params->mergeWith($params);
 	}
 
 	public function beforeControllerAction($controller, $action)
