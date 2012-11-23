@@ -150,36 +150,70 @@ function user()
  * @param string $url
  * @return string Yii::app()->theme->baseUrl
  */
-function tbu($url = null, $useDefault = true)
+function tbu($file = null, $useDefault = true, $themeName = null)
 {
-    if (empty(app()->theme)) return sbu($url);
-    
-    static $themeBaseUrl = null;
-    $filename = realpath(app()->theme->basePath . DS . $url);
-    if (file_exists($filename)) {
-        $themeBaseUrl = rtrim(Yii::app()->theme->baseUrl, '/') . '/';
-        return ($url === null) ? $themeBaseUrl : $themeBaseUrl . ltrim($url, '/');
-    }
-    elseif ($useDefault) {
-        return sbu($url);
+    $sbu = sbu($file);
+    if ($themeName === null)
+        $theme = app()->theme;
+    else
+        $theme = tm()->getTheme($themeName);
+
+    if ($theme !== null) {
+        $filename = $theme->getAssetPath($file);
+        if (file_exists($filename))
+            $url = $theme->getAssetUrl($file);
+        else
+            $url = $useDefault ? $sbu : '';
     }
     else
-        return 'javascript:void(0);';
+         $url = $sbu;
+    
+    return $url;
 }
 
-function tbp($file)
+/**
+ * 获取theme文件的物理路径
+ * @param string $file
+ * @param bool $useDefault 如果theme不存在此文件，是否返回默认theme文件
+ * @param string $themeName theme名字
+ * @return Ambigous <string, NULL> 如果存在返回路径，不存在返回空
+ */
+function tbp($file = null, $useDefault = false, $themeName = null)
 {
-    if (empty(app()->theme)) return sbp($file);
+    $sbp = sbp($file);
+    if ($themeName === null)
+        $theme = app()->theme;
+    else
+        $theme = tm()->getTheme($themeName);
     
     $filepath = null;
-    $themeBasePath = rtrim(app()->theme->basePath, DS) . DS;
-    $filename = $themeBasePath . $file;
-    if (file_exists($filename))
-        $filepath = $filename;
-    elseif (file_exists(sbp($file)))
-        $filepath = sbp($file);
+    if ($theme !== null) {
+        $filepath = $theme->getResourcePath() . DS . $file;
+        if (!file_exists($filepath))
+            $filepath = $useDefault ? $sbp : '';
+    }
 
     return $filepath;
+}
+
+/**
+ * 获取publish之后的theme 资源文件路径
+ * @param string $file
+ * @param string $themeName
+ * @return string 文件路径
+ */
+function tsbp($file = null, $themeName = null)
+{
+    if ($themeName === null)
+        $theme = app()->theme;
+    else
+        $theme = tm()->getTheme($themeName);
+    
+    $filepath = '';
+    if ($theme !== null)
+        $filepath = $theme->getAssetPath($file);
+    
+    return (string) $filepath;
 }
 
 /**
@@ -297,6 +331,7 @@ function request()
 {
     return Yii::app()->request;
 }
+
 function dp($path = null)
 {
     $dp = rtrim(param('dataPath'), DS) . DS;
@@ -304,9 +339,28 @@ function dp($path = null)
 }
 
 
-
-
-
+/**
+ * 将非DocumentRoot内的文件publish到assets内，并返回url
+ * @param string $file 要获取路径的文件
+ * @param string $path publish到assets内的文件目录
+ * @param bool $hashByName
+ * @param integer $level
+ * @param bool $forceCopy
+ * @return string assets内的文件url
+ */
+function assets($file, $path, $hashByName = false, $level = -1, $forceCopy = null)
+{
+    $file = ltrim($file, DS);
+    $assetsPath = am()->getPublishedPath($path, $hashByName);
+    if ($assetsPath === false)
+        $assetsUrl = am()->publish($path, $hashByName, $level, $forceCopy);
+    else
+        $assetsUrl = am()->getPublishedUrl($path, $hashByName);
+    
+    $url = rtrim($assetsUrl) . '/' . $file;
+    
+    return $url;
+}
 
 
 

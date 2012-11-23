@@ -41,7 +41,8 @@
                         <li <?php if ($this->channel == $id) echo 'class="active"';?>><a href="<?php echo url('admin/config/view', array('cid'=>$id));?>"><i class="icon-chevron-right"></i><?php echo $text;?></a></li>
                         <?php endforeach;?>
                         <li class="nav-header">模板设置</li>
-                        <li <?php if ($this->channel == 'theme') echo 'class="active"';?>><a href="<?php echo url('admin/theme/select');?>"><i class="icon-chevron-right"></i>模板选择</a></li>
+                        <li <?php if ($this->channel == 'selecttheme') echo 'class="active"';?>><a href="<?php echo url('admin/theme/select');?>"><i class="icon-chevron-right"></i>模板选择</a></li>
+                        <li <?php if ($this->channel == 'flushtheme') echo 'class="active"';?>><a href="<?php echo url('admin/theme/flush');?>"><i class="icon-chevron-right"></i>更新缓存</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -87,8 +88,8 @@
 <?php
 cs()->registerCoreScript('jquery');
 cs()->registerScriptFile(sbu('libs/bootstrap/js/bootstrap.min.js'), CClientScript::POS_END);
-cs()->registerScriptFile(sbu('js/cd-admin.js'), CClientScript::POS_END);
 cs()->registerScriptFile(sbu('js/cd-basic.js'), CClientScript::POS_END);
+cs()->registerScriptFile(sbu('js/cd-admin.js'), CClientScript::POS_END);
 cs()->registerScriptFile(sbu('libs/chosen/chosen.jquery.min.js'), CClientScript::POS_END);
 cs()->registerCssFile(sbu('libs/chosen/chosen.css'));
 ?>

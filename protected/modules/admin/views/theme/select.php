@@ -14,10 +14,10 @@
             </a>
             <div class="caption">
                 <?php echo CHtml::form('', 'post');?>
-                <?php echo CHtml::hiddenField('theme', $name);?>
+                <?php echo CHtml::hiddenField('theme_name', $name);?>
                 <p class="ac"><?php echo $name;?></p>
                 <p>
-                    <?php if ($name == param('theme')):?>
+                    <?php if ($name == param('theme_name')):?>
                     <input type="button" class="btn btn-danger btn-block" value="当前模板" />
                     <?php else:?>
                     <input type="submit" class="btn btn-inverse btn-block" value="选择" />

@@ -47,22 +47,22 @@ class PostController extends Controller
         ));
     }
     
-    public static function outputStaticCode()
+    public static function outputStaticCode($theme = null)
     {
-        $cssfile = realpath(tbp('css/cd-weixin.css'));
-        if ($cssfile !== false && file_exists($cssfile) && $css = file_get_contents($cssfile))
+        $cssfile = tbp('css/cd-weixin.css', true, $theme);
+        if (file_exists($cssfile) && is_readable($cssfile) && $css = file_get_contents($cssfile))
             cs()->registerCss('wxcss', $css);
         
-        $zeptofile = realpath(sbp('libs/zepto.min.js'));
-        if ($zeptofile !== false && file_exists($zeptofile) && $zeptojs = file_get_contents($zeptofile))
+        $zeptofile = sbp('libs/zepto.min.js');
+        if (file_exists($zeptofile) && is_readable($zeptofile) && $zeptojs = file_get_contents($zeptofile))
             cs()->registerScript('zeptojs', $zeptojs, CClientScript::POS_END);
         
-        $wxfile = realpath(sbp('js/cd-weixin.js'));
-        if ($wxfile !== false && file_exists($wxfile) && $wxjs = file_get_contents($wxfile))
+        $wxfile = sbp('js/weixinapi.js');
+        if (file_exists($wxfile) && is_readable($wxfile) && $wxjs = file_get_contents($wxfile))
             cs()->registerScript('wxjs', $wxjs, CClientScript::POS_END);
         
-        $themefile = realpath(tbp('js/cd-weixin.js'));
-        if ($themefile !== false && file_exists($themefile) && $themejs = file_get_contents($themefile))
+        $themefile = tbp('js/cd-weixin.js', false, $theme);
+        if (file_exists($themefile) && is_readable($themefile) && $themejs = file_get_contents($themefile))
             cs()->registerScript('themejs', $themejs, CClientScript::POS_END);
     }
 

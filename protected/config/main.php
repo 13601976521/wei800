@@ -28,7 +28,7 @@ return array(
     'language' => 'zh_CN',
     'layout' => 'main',
     'timezone' => 'Asia/Shanghai',
-    'theme' => null,
+    'theme' => 'classic',
 
     'import' => array(
 		'application.models.*',
@@ -94,8 +94,8 @@ return array(
             'baseUrl' => $params['resourceBaseUrl'] . 'assets',
         ),
         'themeManager' => array(
+            'themeClass' => 'application.extensions.CDTheme',
             'basePath' => BETA_WEBROOT . DS . '..' . DS . 'themes' . DS,
-            'baseUrl' => $params['themeResourceBaseUrl'],
         ),
         'session' => array(
             'autoStart' => true,

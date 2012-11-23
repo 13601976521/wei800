@@ -1,7 +1,7 @@
 <?php
 class CDBase
 {
-    const VERSION = '1.4';
+    const VERSION = '1.0';
     
     const FILE_NO_EXIST = -1; // '目录不存在并且无法创建';
     const FILE_NO_WRITABLE = -2; // '目录不可写';
@@ -27,6 +27,29 @@ class CDBase
 
         return $ip;
     }
+
+
+    public static function jsonp($callback, $data, $exit = true)
+    {
+        if (empty($callback))
+            throw new CException('callback is not allowed empty');
+    
+        echo $callback . '(' . CJSON::encode($data) . ')';
+        if ($exit) exit(0);
+    }
+    
+    /************* user functions ******************/
+    
+    public static function encryptPassword($password)
+    {
+        $pwd = '';
+        if (!empty($password))
+            $pwd = md5($password);
+    
+        return $pwd;
+    }
+    
+    /************* upload functions ******************/
     
     /**
      * 返回上传后的文件路径
@@ -79,24 +102,6 @@ class CDBase
         
         return $data;
     }
-    
-    public static function encryptPassword($password)
-    {
-        $pwd = '';
-        if (!empty($password))
-            $pwd = md5($password);
-        
-        return $pwd;
-    }
-
-    public static function jsonp($callback, $data, $exit = true)
-    {
-        if (empty($callback))
-            throw new CException('callback is not allowed empty');
-        
-        echo $callback . '(' . CJSON::encode($data) . ')';
-        if ($exit) exit(0);
-    }
 
     public static function uploadImage(CUploadedFile $upload, $additional = null, $compress = true, $deleteTempFile = true)
     {
@@ -132,40 +137,6 @@ class CDBase
             return $filename;
         else
             return false;
-    }
-
-    public static function filterText($text)
-    {
-        static $keywords = null;
-        if ($keywords === null) {
-            $filename = dp('filter_keywords.php');
-            if (file_exists($filename) && is_readable($filename)) {
-                $keywords = require($filename);
-            }
-            else
-                return $text;
-        }
-//         var_dump($keywords);exit;
-        if (empty($keywords)) return $text;
-
-        try {
-            $patterns = array_keys($keywords);
-            foreach ($patterns as $index => $pattern) {
-                $patterns[$index] = '/' . $pattern . '/is';
-            }
-            
-            $replacement = array_values($keywords);
-            foreach ($replacement as $index => $word)
-                $replacement[$index] = empty($word) ? param('filterKeywordReplacement') : $word;
-            
-            $result = preg_replace($patterns, $replacement, $text);
-            $newText = ($result === null) ? $text : $result;
-        }
-        catch (Exception $e) {
-            $newText = $text;
-        }
-        
-        return $newText;
     }
 
     public static function mergeHttpUrl($baseurl, $relativeUrl)
@@ -237,7 +208,9 @@ class CDBase
         $pos = stripos($url, 'http://');
         return $pos === 0;
     }
-    
+
+    /************* global url functions ******************/
+	
     public static function siteHomeUrl()
     {
         return aurl('site/index');
@@ -262,5 +235,73 @@ class CDBase
     {
         return aurl('site/signup');
     }
+
+
+    /**************** keyword filter ***********************/
+    
+    public static function filterText($text)
+    {
+        static $keywords = null;
+        if ($keywords === null) {
+            $filename = dp('filter_keywords.php');
+            if (file_exists($filename) && is_readable($filename)) {
+                $keywords = require($filename);
+            }
+            else
+                return $text;
+        }
+        //         var_dump($keywords);exit;
+        if (empty($keywords)) return $text;
+    
+        try {
+            $patterns = array_keys($keywords);
+            foreach ($patterns as $index => $pattern) {
+                $patterns[$index] = '/' . $pattern . '/is';
+            }
+    
+            $replacement = array_values($keywords);
+            foreach ($replacement as $index => $word)
+                $replacement[$index] = empty($word) ? param('filterKeywordReplacement') : $word;
+    
+            $result = preg_replace($patterns, $replacement, $text);
+            $newText = ($result === null) ? $text : $result;
+        }
+        catch (Exception $e) {
+            $newText = $text;
+        }
+    
+        return $newText;
+    }
+    
+    
+    /*************************** theme functions *****************************/
+
+    public static function publishAllThemeResources($focreCopy = false)
+    {
+        $names = tm()->getThemeNames();
+        foreach ($names as $name) {
+            $theme = tm()->getTheme($name);
+            if ($theme !== null) {
+                if ($focreCopy)
+                    $theme->forcePublishResources();
+                else
+                    $theme->publishResources();
+            }
+        }
+    }
+    
+    public static function themeScreens()
+    {
+        $data = array();
+        $names = tm()->getThemeNames();
+        foreach ($names as $name) {
+            $theme = tm()->getTheme($name);
+            if ($theme !== null) {
+                $data[$name] = $theme->getAssetUrl('screenshoot.png');
+            }
+        }
+        return $data;
+    }
+
 }
 

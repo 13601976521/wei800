@@ -17,8 +17,6 @@ return array(
     // 静态资源文件保存目录及基本url地址，url后面要带/
     'resourceBasePath' => BETA_WEBROOT . DS . '..' . DS . 'resources' . DS,
     'resourceBaseUrl' => 'http://s.weixin800.cn/',
-    'themeBasePath' => BETA_WEBROOT . DS . '..' . DS . 'themes' . DS,
-    'themeResourceBaseUrl' => 'http://s.weixin800.cn/themes/',
 
     /*
      * datetime format

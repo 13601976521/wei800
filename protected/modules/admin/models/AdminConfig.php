@@ -53,6 +53,11 @@ class AdminConfig extends Config
         return $result;
     }
     
+    public static function saveThemeName($value)
+    {
+        return self::saveConfig('theme_name', $value);
+    }
+    
     public static function cacheFilename()
     {
         return dp(param('custom_config_filename'));
