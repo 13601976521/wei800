@@ -1,4 +1,4 @@
-<h1 class="cred acenter">微800&nbsp;专业微信运营互推平台正式上线！！！QQ群：57275306</h1>
+<h1 class="cred ac">微800&nbsp;专业微信运营互推平台正式上线！！！QQ群：57275306</h1>
 <div class="fleft feature">
     <div class="beta-alert">
         <h3>当前提供如下功能：</h3>

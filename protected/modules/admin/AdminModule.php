@@ -6,6 +6,7 @@ class AdminModule extends CWebModule
 {
 	public function init()
 	{
+	    app()->urlManager->setUrlFormat('get');
 	    app()->setTheme(null);
 	    
 	    if (user()->getIsGuest()) {

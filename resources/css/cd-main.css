@@ -2,9 +2,9 @@
 
 .fleft {float:left;}
 .fright {float:right;}
-.aleft {text-align:left;}
-.aright {text-align:right;}
-.acenter {text-align:center;}
+.al {text-align:left;}
+.ar {text-align:right;}
+.ac {text-align:center;}
 .clear {display:block; height:0; width:100%; font-size:0px; clear:both;}
 
 .cd-wrapper {width:960px; margin:0 auto;}
@@ -12,7 +12,7 @@
 .cd-sidebar {width:300px;}
 
 #header {margin-bottom:15px; background:#3F3F3F; color:white;}
-#footer {padding:10px; background:black; color:#DFDFDF; font-size:12px;}
+#footer {padding:10px; margin-top:15px; background:black; color:#DFDFDF; font-size:12px;}
 #footer a {color:#DFDFDF;}
 #footer a:hover {color:white;}
 
@@ -32,6 +32,11 @@
 .cd-links li a {font-size:12px;}
 .cd-links li img {width:81px; height:31px;}
 
-
+/* weixin/index */
+.weixin-info {list-style:none; font-size:26px; margin-top:20px;}
+.weixin-info li {margin-bottom:15px; line-height:140%;}
+.weixin-info .weixin-intro {color:gray;}
+.avatar-box {text-align:center; margin:15px 0 10px;}
+.avatar-box img {width:110px; margin:0 15px; padding:0;}
 
 

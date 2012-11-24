@@ -11,7 +11,7 @@ class WeixinController extends Controller
         if ($weixin === null)
             throw new CHttpException(403, '此微信号不存在');
         
-        $this->setPageKeyWords(array($weixin->wxname, '微信运营平台,微信互推'));
+        $this->setPageKeyWords(array($weixin->wxname, app()->name, '微信运营平台', '微信互推'));
         $this->setSiteTitle($weixin->wxname);
         $this->setPageDescription($weixin->desc);
         $this->render('index', array(

@@ -13,7 +13,7 @@
 <body>
 <div id="header" class="clearfix">
     <div class="cd-wrapper">
-        <h2>微800 - 专业微信运营平台</h2>
+        <h2><?php echo app()->name;?> - <?php echo param('shortdesc');?></h2>
     </div>
 </div>
 
@@ -21,8 +21,8 @@
 <?php echo $content;?>
 </div>
 
-<div id="footer" class="acenter clearfix">
-    <a href="http://www.weixin800.com/">Powered by 微800 专业微信运营平台</a>&nbsp;&nbsp;
+<div id="footer" class="ac clearfix">
+    <a href="http://www.weixin800.com/static/intro">Powered by 微800 专业微信运营平台</a>&nbsp;&nbsp;
     <?php echo param('beian_code');?>
 </div>
 </body>

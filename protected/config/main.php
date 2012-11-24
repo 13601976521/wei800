@@ -21,20 +21,19 @@ catch (Exception $e) {
 $dbconfig = require($params['dataPath'] . DS . 'db.config.php');
 
 return array(
-    'id' => 'weixin800.com',
-    'name' => '微800',
+    'id' => $_SERVER['HTTP_HOST'],
+    'name' => $params['site_name'],
     'basePath' => BETA_CONFIG_ROOT . DS . '..',
     'charset' => 'utf-8',
     'language' => 'zh_CN',
     'layout' => 'main',
     'timezone' => 'Asia/Shanghai',
-    'theme' => 'classic',
+    'theme' => null,
 
     'import' => array(
 		'application.models.*',
 		'application.components.*',
         'application.extensions.*',
-        'application.widgets.*',
         'application.libs.*',
 	),
         
@@ -85,7 +84,7 @@ return array(
 // 		    'queryCacheID' => 'cache',
 // 		    'queryCachingDuration' => 60,
         ),
-        'cache' => YII_DEBUG ? null : array(
+        'cache' => YII_DEBUG || !$params['cache_enable'] ? null : array(
             'class' => 'CFileCache',
             'directoryLevel' => 2,
         ),

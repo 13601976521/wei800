@@ -76,7 +76,7 @@ class LoginForm extends CFormModel
      */
     public function login()
     {
-        $duration = (user()->allowAutoLogin && $this->rememberMe) ? param('autoLoginDuration') : 0;
+        $duration = (user()->allowAutoLogin && $this->rememberMe) ? param('auto_login_duration') : 0;
         if (user()->login($this->_identity, $duration)) {
             $this->afterLogin();
             return true;

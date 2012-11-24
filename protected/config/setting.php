@@ -4,10 +4,12 @@
  */
 
 return array(
+    // 站点名称
+    'site_name' => '微800',
     // 网站短描述
     'shortdesc' => '最专业的微信运营互推平台',
-    // 记住用户登录状态的cookie时间
-    'autoLoginDuration' => 3600 * 24 * 7,
+    'site_keywords' => '',
+    'site_description' => '',
 
     // 缓存数据目录
     'dataPath' => BETA_CONFIG_ROOT . DS . '..' . DS . 'data' . DS,
@@ -28,13 +30,15 @@ return array(
     'formatTime' => 'H:i:s',
     'formatShortTime' => 'H:i',
         
-    'url_format' => 'get',
+    'url_format' => 'path',
+    'wx_post_show_format' => 'p/<id:\d+>',
         
+    'cache_enable' => 0,
+
     // 推广账号默认单行显示数量
     'ad_weixin_default_line_show_count' => 0,
-    
-    // 简述中可以使用的html标签
-    'mobileSummaryHtmlTags' => '<img>',
+    // 记住用户登录状态的cookie时间
+    'auto_login_duration' => 3600 * 24 * 7,
     
     // default param and value
     'beian_code' => '',
@@ -42,10 +46,10 @@ return array(
     'header_html' => '',
     'footer_after_html' => '',
     'footer_before_html' => '',
-    'site_keywords' => '',
-    'site_description' => '',
     'user_required_email_verfiy' => 0,
     'user_required_admin_verfiy' => 0,
     'auto_remote_image_local' => 0,
 );
+
+
 

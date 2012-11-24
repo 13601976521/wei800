@@ -18,11 +18,11 @@
 
 <h4><?php echo $this->title;?></h4>
 <form action='' method="post" class="form-horizontal">
-<table class="table table-striped table-bordered beta-config-table">
+<table class="table table-striped table-bordered config-table">
     <thead>
         <tr>
-            <th class="span1 align-center">ID</th>
-            <th class="span2 align-right">参数名称/参数变量名</th>
+            <th class="span1 ac">ID</th>
+            <th class="span2 ar">参数名称/变量名</th>
             <th class="span6">参数值</th>
             <th class="span3">描述</th>
             <th>#</th>
@@ -31,10 +31,10 @@
     <tbody>
         <?php foreach ($models as $model):?>
         <tr>
-            <td class="align-center"><?php echo $model['id'];?></td>
-            <td class="align-right config-name">
+            <td class="ac"><?php echo $model['id'];?></td>
+            <td class="ar config-name">
                 <strong><?php echo h($model['name']);?></strong>
-                <span class="cgray f12px"><?php echo $model['config_name'];?></span>
+                <em class="cgray f12px"><?php echo $model['config_name'];?></em>
             </td>
             <td>
             <?php if (strlen($model['config_value']) < 50):?>

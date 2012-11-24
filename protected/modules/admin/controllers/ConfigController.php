@@ -5,12 +5,12 @@ class ConfigController extends AdminController
     {
         $cid = (int)$cid;
         $cmd = app()->getDb()->createCommand()
-            ->from(TABLE_USER_CONFIG)
+            ->from(TABLE_CONFIG)
             ->order('id asc')
             ->where('category_id = :cid', array(':cid' => $cid));
         $rows = $cmd->queryAll();
         
-        $labels = AdminUserConfig::categoryLabels();
+        $labels = AdminConfig::categoryLabels();
         $this->title = '查看配置参数&nbsp;-&nbsp;' . $labels[$cid];
         $this->render('list', array(
             'models' => $rows,
@@ -18,9 +18,9 @@ class ConfigController extends AdminController
         ));
     }
     
-    public function actionEdit($categoryid)
+    public function actionEdit($cid)
     {
-        $categoryid = (int)$categoryid;
+        $cid = (int)$cid;
         
         if (request()->getIsPostRequest() && isset($_POST['AdminConfig'])) {
             $params = $_POST['AdminConfig'];
@@ -36,14 +36,14 @@ class ConfigController extends AdminController
         $cmd = app()->getDb()->createCommand()
             ->from(AdminConfig::model()->tableName())
             ->order('id asc')
-            ->where('category_id = :categoryid', array(':categoryid' => $categoryid));
+            ->where('category_id = :cid', array(':cid' => $cid));
         $rows = $cmd->queryAll();
         
         $labels = AdminConfig::categoryLabels();
-        $this->title = '查看配置参数&nbsp;-&nbsp;' . $labels[$categoryid];
+        $this->title = '查看配置参数&nbsp;-&nbsp;' . $labels[$cid];
         $this->render('edit', array(
             'models'=>$rows,
-            'categoryid' => $categoryid,
+            'categoryid' => $cid,
             'errorNames' => $errorNames,
         ));
     }

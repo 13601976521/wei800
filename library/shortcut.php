@@ -158,6 +158,7 @@ function tbu($file = null, $useDefault = true, $themeName = null)
     else
         $theme = tm()->getTheme($themeName);
 
+    $url = '';
     if ($theme !== null) {
         $filename = $theme->getAssetPath($file);
         if (file_exists($filename))
@@ -192,6 +193,8 @@ function tbp($file = null, $useDefault = false, $themeName = null)
         if (!file_exists($filepath))
             $filepath = $useDefault ? $sbp : '';
     }
+    else
+        $filepath = $sbp;
 
     return $filepath;
 }

@@ -1,5 +1,15 @@
-<h1>名称：<?php echo $weixin->wxname;?></h1>
-<h1>原始微号：<?php echo $weixin->original_wxid;?></h1>
-<h1>修改微号：<?php echo $weixin->custom_wxid;?></h1>
-<h1>介绍：<?php echo $weixin->desc;?></h1>
-<div><?php echo $weixin->circleAvatarImage;?></div>
+<div class="cd-container fleft">
+    <ul class="weixin-info">
+        <li>账号名称：<?php echo $weixin->wxname;?></li>
+        <li>原始微号：<?php echo $weixin->original_wxid;?></li>
+        <li>修改微号：<?php echo $weixin->custom_wxid;?></li>
+        <li class="weixin-intro">账号介绍：<?php echo $weixin->desc;?></li>
+    </ul>
+</div>
+<div class="cd-sidebar fright">
+    <div class="avatar-box">
+        <?php echo $weixin->rectAvatarImage;?>
+        <?php echo $weixin->circleAvatarImage;?>
+    </div>
+    <div><?php echo $weixin->qrcodeImage;?></div>
+</div>
