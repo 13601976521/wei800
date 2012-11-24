@@ -47,7 +47,7 @@ define('POST_TYPE_ONE', 0);
 define('POST_TYPE_GROUP', 1);
 define('POST_GROUP_ID_DIVIDER', ',');
 
-
+define('POST_CONTENT_MULTIPLE_DIVIDER', '=+----------------------+=');
 
 
 

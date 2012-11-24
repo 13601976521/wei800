@@ -12,7 +12,7 @@
 
 .cd-container {padding-left:5px; padding-right:5px; margin-bottom:15px;}
 .cd-navbar {position:fixed; top:0; left:0; right:0; z-index:999;}
-.cd-sidebar {width:150px; margin-top:52px; z-index:998;}
+.cd-sidebar {width:150px; margin-top:52px;}
 .cd-entry {margin-left:165px; margin-top:52px;}
 
 .quick-nav {border:1px solid rgba(0, 0, 0, 0.2); border:1px solid #CCC; padding-top:10px; padding-bottom:10px; -webkit-border-radius:6px; -webkit-box-shadow:0 5px 10px rgba(0, 0, 0, 0.2); box-shadow:0 5px 10px rgba(0, 0, 0, 0.2); background-clip:padding-box; -webkit-background-clip:padding-box;}
@@ -30,8 +30,7 @@ table .column-label {width:150px; text-align:right;}
 .table th.span-short-time, .table td.span-short-time {float:none; width:80px; margin-left:0;}
 .red-star {color:red; font-size:18px; padding-top:30px;}
 .weixin-form .wx-avatar, .weixin-form .wx-qrcode {width:50px; display:block;}
-.post-form .post-content0 {width:620px; height:450px; resize:vertical;}
-.post-form .post-content1 {width:620px; height:60px; line-height:30px; font-size:25px; resize:none;}
+.post-form .post-content {width:620px; height:300px; resize:vertical;}
 form .input-tip {margin-left:120px;}
 .table-title {display:block; width:100%; padding:0; margin-bottom:10px; font-size:19.5px; line-height:30px; color:#333333;}
 .table-title small {font-size:15px; color:#999999;}
@@ -45,6 +44,7 @@ form.table-header {margin-bottom:10px;}
 .popover.static {display:inline-block; position:static;}
 .popover.popover-block {width:auto; display:block;}
 
+.theme-thumbnails li {width:200px;}
 .theme-thumbnails .thumbnail {position:relative;}
 .theme-thumbnails form {margin:0; padding:0;}
 .theme-thumbnails .caption {position:absolute; bottom:4px; left:4px; right:4px; background:rgba(0, 0, 0, .65);}

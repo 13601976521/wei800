@@ -20,6 +20,8 @@ class PostController extends AdminController
         if (request()->getIsPostRequest() and isset($_POST['AdminPost'])) {
             $model->attributes = $_POST['AdminPost'];
             $model->user_id = user()->id;
+            $contents = array_filter($_POST['content']);
+            $model->content = join(POST_CONTENT_MULTIPLE_DIVIDER, $contents);
             
             if ($model->getIsNewRecord())
                 CDCache::saveLastCreatePostWxid($model->weixin_id);

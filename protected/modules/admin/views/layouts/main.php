@@ -55,9 +55,9 @@
             </ul>
             <ul class="nav pull-right">
                 <li><a href="http://mp.weixin.qq.com" target="_blank">腾讯公众平台</a></li>
+                <li><?php echo l('网站首页', CDBase::siteHomeUrl(), array('target'=>'_blank'));?></li>
                 <li <?php if ($this->channel == 'profile') echo 'class="active"';?>><?php echo l(user()->name, url('admin/profile/info'));?></li>
                 <li><?php echo l('退出登录', CDBase::logoutUrl());?></li>
-                <li><?php echo l('网站首页', CDBase::siteHomeUrl(), array('target'=>'_blank'));?></li>
             </ul>
         </div>
     </div>

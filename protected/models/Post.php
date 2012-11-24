@@ -246,6 +246,26 @@ class Post extends CActiveRecord
         return $posts;
 	}
 	
+	public function getContents()
+	{
+	    static $contents = null;
+	    if ($contents === null) {
+	        $contents = explode(POST_CONTENT_MULTIPLE_DIVIDER, $this->content);
+	    }
+	    
+	    return (array)$contents;
+	}
+	
+	public function getFilterContents()
+	{
+	    static $contents = null;
+	    if ($contents === null) {
+	        $contents = explode(POST_CONTENT_MULTIPLE_DIVIDER, $this->getFilterContent());
+	    }
+	    
+	    return (array)$contents;
+	}
+	
 	public function getAdWeixinModels()
 	{
 	    static $weixins = null;

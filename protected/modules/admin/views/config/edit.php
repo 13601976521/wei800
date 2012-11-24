@@ -16,40 +16,44 @@
 </div>
 <?php endif;?>
 
-<h4><?php echo $this->title;?></h4>
-<form action='' method="post" class="form-horizontal">
-<table class="table table-striped table-bordered config-table">
-    <thead>
-        <tr>
-            <th class="span1 ac">ID</th>
-            <th class="span2 ar">参数名称/变量名</th>
-            <th class="span6">参数值</th>
-            <th class="span3">描述</th>
-            <th>#</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($models as $model):?>
-        <tr>
-            <td class="ac"><?php echo $model['id'];?></td>
-            <td class="ar config-name">
-                <strong><?php echo h($model['name']);?></strong>
-                <em class="cgray f12px"><?php echo $model['config_name'];?></em>
-            </td>
-            <td>
-            <?php if (strlen($model['config_value']) < 50):?>
-                <input class="span5" type="text" name="AdminConfig[<?php echo $model['config_name'];?>]" value="<?php echo h($model['config_value']);?>" />
-            <?php else:?>
-                <textarea class="span6" name="AdminConfig[<?php echo $model['config_name'];?>]"><?php echo h($model['config_value']);?></textarea>
-            <?php endif;?>
-            </td>
-            <td><?php echo nl2br(h($model['desc']));?></td>
-            <td>&nbsp;</td>
-        </tr>
-        <?php endforeach;?>
-    </tbody>
-</table>
-<div class="form-actions">
-    <input type="submit" value="提交" class="btn btn-primary" />
-</div>
-</form>
+<?php echo CHtml::form('', 'post', array('class'=>'form-horizontal'));?>
+<fieldset>
+    <legend><?php echo $this->title;?></legend>
+    <table class="table table-striped table-bordered config-table">
+        <thead>
+            <tr>
+                <th class="span1 ac">ID</th>
+                <th class="span2 ar">参数名称/变量名</th>
+                <th class="span6">参数值</th>
+                <th class="span3">描述</th>
+                <th>#</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($models as $model):?>
+            <tr>
+                <td class="ac"><?php echo $model['id'];?></td>
+                <td class="ar config-name">
+                    <strong><?php echo h($model['name']);?></strong>
+                    <em class="cgray f12px"><?php echo $model['config_name'];?></em>
+                </td>
+                <td>
+                <?php if (strlen($model['config_value']) < 50):?>
+                    <input class="span5" type="text" name="AdminConfig[<?php echo $model['config_name'];?>]" value="<?php echo h($model['config_value']);?>" />
+                <?php else:?>
+                    <textarea class="span6" name="AdminConfig[<?php echo $model['config_name'];?>]"><?php echo h($model['config_value']);?></textarea>
+                <?php endif;?>
+                </td>
+                <td><?php echo nl2br(h($model['desc']));?></td>
+                <td>&nbsp;</td>
+            </tr>
+            <?php endforeach;?>
+        </tbody>
+    </table>
+    <div class="form-actions">
+        <input type="submit" value="提交" class="btn btn-primary" />
+    </div>
+</fieldset>
+<?php echo CHtml::endForm();?>
+
+

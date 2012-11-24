@@ -4,11 +4,7 @@ class ConfigController extends AdminController
     public function actionView($cid)
     {
         $cid = (int)$cid;
-        $cmd = app()->getDb()->createCommand()
-            ->from(TABLE_CONFIG)
-            ->order('id asc')
-            ->where('category_id = :cid', array(':cid' => $cid));
-        $rows = $cmd->queryAll();
+        $rows =self::fetchConfig($cid);
         
         $labels = AdminConfig::categoryLabels();
         $this->title = '查看配置参数&nbsp;-&nbsp;' . $labels[$cid];
@@ -33,11 +29,7 @@ class ConfigController extends AdminController
                 $errorNames = $result;
         }
         
-        $cmd = app()->getDb()->createCommand()
-            ->from(AdminConfig::model()->tableName())
-            ->order('id asc')
-            ->where('category_id = :cid', array(':cid' => $cid));
-        $rows = $cmd->queryAll();
+        $rows =self::fetchConfig($cid);
         
         $labels = AdminConfig::categoryLabels();
         $this->title = '查看配置参数&nbsp;-&nbsp;' . $labels[$cid];
@@ -88,5 +80,14 @@ class ConfigController extends AdminController
         ));
     }
 
+    private static function fetchConfig($cid)
+    {
+        $cmd = app()->getDb()->createCommand()
+            ->from(TABLE_CONFIG)
+            ->order('id asc')
+            ->where(array('and', 'category_id = :cid', "config_name != 'theme_name'"), array(':cid' => $cid));
+        $rows = $cmd->queryAll();
+        return $rows;
+    }
 }
 

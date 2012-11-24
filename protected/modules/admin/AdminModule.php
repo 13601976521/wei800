@@ -28,9 +28,8 @@ class AdminModule extends CWebModule
 	public static function mergeParams()
 	{
 	    $params = require(ADMIN_MODULE_ROOT . 'config' . DS . 'params.php');
-	    
 	    $cachefile = AdminConfig::cacheFilename();
-	    if (file_exists($cachefile)) {
+	    if (file_exists($cachefile) && is_readable($cachefile)) {
 	        $customSetting = require($cachefile);
 	        $params = array_merge($params, $customSetting);
 	    }

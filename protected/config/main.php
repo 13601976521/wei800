@@ -7,8 +7,8 @@ try {
     $defaultSetting = require(BETA_CONFIG_ROOT . DS . 'setting.php');
     $params = array_merge($defaultSetting, $params);
     $cachefile = $defaultSetting['dataPath'] . DS . 'setting.config.php';
-    if (file_exists($cachefile)) {
-        $customSetting = require($cachefile);
+    if (file_exists($cachefile) && is_readable($cachefile)) {
+        $customSetting = @require($cachefile);
         $params = array_merge($params, $customSetting);
     }
     
@@ -113,7 +113,7 @@ return array(
             'defaultRoles' => array('member'),
         ),
         'urlManager' => array(
-            'urlFormat' => $params['url_format'],
+            'urlFormat' => in_array($params['url_format'], array('get', 'path')) ? $params['url_format'] : 'get',
 		    'showScriptName' => false,
             'caseSensitive' => false,
             'cacheID' => 'cache',

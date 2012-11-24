@@ -5,8 +5,5 @@
 
 return array(
     'custom_config_filename' => 'setting.config.php',
-        
-    'cache_friend_links' => 'beta_cache_friend_links',
-
-    'cache_adcodes_id' => 'adcodes_%s',
+    'user_custom_config_filename' => 'user_config_%d.php', // %d为用户id号，此项在多用户版有效
 );

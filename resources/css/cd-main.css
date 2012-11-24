@@ -24,8 +24,8 @@
 
 /* error page */
 .cd-error {color:gray;}
-.cd-error .error-icon {font-size:200px; color:#BFBFBF; margin-right:20px; line-height:300px; font-weight:bold;}
-.cd-error .error-detail {padding:40px 40px 0 0; line-height:24px;}
+.cd-error .error-icon {font-size:200px; color:#BFBFBF; line-height:240px; font-weight:bold;}
+.cd-error .error-detail {padding:40px 0px 0; line-height:24px;}
 
 /* friend links */
 .cd-links li {float:left; margin:5px 6px; width:93px; overflow:hidden;}
@@ -33,9 +33,10 @@
 .cd-links li img {width:81px; height:31px;}
 
 /* weixin/index */
-.weixin-info {list-style:none; font-size:26px; margin-top:20px;}
+.weixin-info {list-style:none; font-size:20px; margin-top:20px;}
 .weixin-info li {margin-bottom:15px; line-height:140%;}
-.weixin-info .weixin-intro {color:gray;}
+.weixin-info li label {color:#888888; font-size:inherit; display:inline;}
+.weixin-info .weixin-intro p {margin-top:15px; font-size:16px; color:gray; text-indent:32px;}
 .avatar-box {text-align:center; margin:15px 0 10px;}
 .avatar-box img {width:110px; margin:0 15px; padding:0;}
 

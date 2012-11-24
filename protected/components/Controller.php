@@ -64,6 +64,13 @@ class Controller extends CController
 
 	public function setSiteTitle($text = '')
 	{
+        $titleArray = array(app()->name);
+        if (param('shortdesc'))
+            array_push($titleArray, param('shortdesc'));
+        if (!empty($text))
+    	    array_unshift($titleArray, $text);
+
+        $text = strip_tags(trim(join(' - ', $titleArray)));
 	    $this->pageTitle = $text;
 	}
 

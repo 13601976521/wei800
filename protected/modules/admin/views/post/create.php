@@ -23,16 +23,22 @@
             <?php if($model->hasErrors('title')):?><span class="help-inline"><?php echo $model->getError('title');?></span><?php endif;?>
         </div>
     </div>
-    <div class="control-group <?php if($model->hasErrors('content')) echo 'error';?>">
+    <?php foreach ($model->getContents() as $index => $content):?>
+    <div class="contents-box control-group <?php if($model->hasErrors('content') && $index == 0) echo 'error';?>">
         <?php echo CHtml::activeLabel($model, 'content', array('class'=>'control-label'));?>
         <div class="controls">
-            <?php echo CHtml::activeTextArea($model, 'content', array('class'=>'post-content' . $model->type_id, 'id'=>'post-content'));?>
-            <?php if($model->hasErrors('content')):?><p class="help-block"><?php echo $model->getError('content');?></p><?php endif;?>
+            <?php if($model->hasErrors('content') && $index == 0):?>
+                <p class="help-block"><?php echo $model->getError('content');?></p>
+            <?php endif;?>
+            <p class="help-block">第&nbsp;<em><?php echo $index + 1;?></em>&nbsp;段内容</p>
+            <?php echo CHtml::textArea('content[]', $content, array('class'=>'post-content', 'id'=>'content' . $index));?>
         </div>
     </div>
+    <?php endforeach;?>
     <div class="form-actions">
-        <input type="submit" value="提交" class="btn btn-primary" />
         <a class="btn" href="<?php echo $model->listUrl;?>">返回列表</a>
+        <input type="button" value="再添加一段内容" class="btn btn-inverse" id="new-content" />
+        <input type="submit" value="提交保存" class="btn btn-primary" />
     </div>
     <div class="control-group <?php if($model->hasErrors('ad_accounts')) echo 'error';?>">
         <?php echo CHtml::activeLabel($model, 'ad_accounts', array('class'=>'control-label'));?>
@@ -50,8 +56,8 @@
         </div>
     </div>
     <div class="form-actions">
-        <input type="submit" value="提交" class="btn btn-primary" />
         <a class="btn" href="<?php echo $model->listUrl;?>">返回列表</a>
+        <input type="submit" value="提交保存" class="btn btn-primary" />
     </div>
 </fieldset>
 <?php echo CHtml::hiddenField('adaccounts', $model->adWeixinText, array('id'=>'adaccounts'));?>
@@ -68,6 +74,7 @@ $(function(){
 		'placeholder_text': '可以选择多个微信号',
 		'no_results_text': '没有找到匹配的微信号'
 	});
+
 	$(document).on('submit', 'form', function(){
 	    var options = $('#_adaccounts option');
 	    var ids = [];
@@ -83,11 +90,11 @@ $(function(){
 	    var adaccounts = selectedIds.join(',');
 	    $('#adaccounts').val(adaccounts);
 	});
-	
+
     KindEditor.ready(function(K) {
     	KEConfig.weixin.cssPath = ['<?php echo sbu('css/cd-weixin.css');?>'];
     	KEConfig.weixin.uploadJson = '<?php echo aurl('upload/image');?>';
-    	var CDContent = K.create('#post-content', KEConfig.weixin);
+    	K.create('.post-content', KEConfig.weixin);
     });
 });
 </script>

@@ -7,8 +7,9 @@
 
 <?php echo CHtml::form('', 'post');?>
 <div class="alert alert-block">
-<p>刷新模板缓存</p>
+<p>此操作将会刷新当前选择模板的所有缓存数据，包括资源文件(css, js, images)，以及缓存数据。</p>
+<p>如此当前未使用模板而使用的系统默认模板，则不需要此操作。</p>
 <div class="btn-toolbar">
-<input class="btn btn-primary" type="submit" value="更新模板缓存" /></div>
+    <input class="btn btn-primary" type="submit" value="更新模板缓存" /></div>
 </div>
 <?php echo CHtml::endForm();?>

@@ -7,7 +7,9 @@
         <b>&gt;</b>
     </a>
     
-    <div class="cd-post-content"><?php echo $post->filterContent;?></div>
+    <?php foreach ($post->filterContents as $content):?>
+    <div class="cd-post-content"><?php echo $content;?></div>
+    <?php endforeach;?>
     
     <div class="button-row">
         <button type="button" data-action="wxshare" class="btn btn-block btn-large" type="button">分享至朋友圈</button>

@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="robots" content="all" />
 </head>
-<body class="wx-mobile">
+<body>
 <div class="wx-wrapper">
 <?php echo $content;?>
 </div>

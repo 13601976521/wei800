@@ -1,9 +1,9 @@
 <div class="cd-container fleft">
     <ul class="weixin-info">
-        <li>账号名称：<?php echo $weixin->wxname;?></li>
-        <li>原始微号：<?php echo $weixin->original_wxid;?></li>
-        <li>修改微号：<?php echo $weixin->custom_wxid;?></li>
-        <li class="weixin-intro">账号介绍：<?php echo $weixin->desc;?></li>
+        <li><label>账号名称：</label><?php echo $weixin->wxname;?></li>
+        <li><label>原始微号：</label><?php echo $weixin->original_wxid;?></li>
+        <li><label>修改微号：</label><?php echo $weixin->custom_wxid;?></li>
+        <li class="weixin-intro"><label>账号介绍：</label><p><?php echo $weixin->desc;?></p></li>
     </ul>
 </div>
 <div class="cd-sidebar fright">
