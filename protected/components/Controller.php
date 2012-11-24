@@ -62,15 +62,8 @@ class Controller extends CController
 	    cs()->registerMetaTag($text, 'description');
 	}
 
-	public function setSiteTitle($value = '')
+	public function setSiteTitle($text = '')
 	{
-        $titleArray = array(app()->name);
-        if (param('shortdesc'))
-            array_push($titleArray, param('shortdesc'));
-        if (!empty($value))
-    	    array_unshift($titleArray, $value);
-
-        $text = strip_tags(trim(join(' - ', $titleArray)));
 	    $this->pageTitle = $text;
 	}
 

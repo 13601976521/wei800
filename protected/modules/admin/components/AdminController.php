@@ -11,6 +11,12 @@ class AdminController extends Controller
     public $title;
     public $breadcrumbs = array();
     
+    public function init()
+    {
+        parent::init();
+        $this->setSiteTitle();
+    }
+    
     public function getUser()
     {
         $user = AdminUser::model()->findByPk($this->getUserID());
@@ -20,8 +26,10 @@ class AdminController extends Controller
         return $user;
     }
     
-	public function setSiteTitle($text)
+	public function setSiteTitle($text = '')
 	{
-	    $this->pageTitle = $text . '_' . app()->name;
+	    if (empty($text))
+	        $text = app()->name;
+	    $this->pageTitle = $text . ' - 管理中心';
 	}
 }

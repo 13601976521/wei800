@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="<?php echo app()->charset;?>" />
-<title><?php echo app()->name;?> - 管理中心</title>
+<title><?php echo $this->pageTitle;?></title>
 <link rel="stylesheet" type="text/css" href="<?php echo sbu('libs/bootstrap/css/bootstrap.min.css');?>" />
 <link rel="stylesheet" type="text/css" href="<?php echo sbu('css/cd-admin.css?t=20121106001');?>" />
 </head>
