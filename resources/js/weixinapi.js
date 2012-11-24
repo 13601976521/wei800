@@ -44,7 +44,7 @@ CDWeixin.sendShareFriendStats = function(data, msg){
 };
 
 CDWeixin.sendFollowStats = function(data, wxid, msg){
-	var url = data.followUrl + '&wxid=' + wxid + '&msg=' + msg + '&t=' + (new Date).getTime();alert(url);
+	var url = data.followUrl + '&wxid=' + wxid + '&msg=' + msg + '&t=' + (new Date).getTime();
 	new Image().src = url;
 };
 
