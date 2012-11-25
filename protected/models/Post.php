@@ -332,6 +332,16 @@ class Post extends CActiveRecord
             }
         }
     }
+
+    protected function afterDelete()
+    {
+        app()->getDb()->createCommand()
+            ->delete(TABLE_COMMENT, 'post_id = :pid', array(':pid'=>$this->id));
+            
+        app()->getDb()->createCommand()
+            ->delete(TABLE_POST_WEIXIN, 'post_id = :pid', array(':pid'=>$this->id));
+            
+    }
 }
 
 

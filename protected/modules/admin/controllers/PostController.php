@@ -109,4 +109,23 @@ class PostController extends AdminController
         $this->render('list_stats', $data);
     }
 
+    public function actionDelete($id, $callback)
+    {
+        $id = (int)$id;
+        if ($id > 0) {
+            $model = AdminPost::model()->findByPk($id);
+            if ($model && $model->delete()) {
+                $data = array('errno'=>CD_NO);
+            }
+            else {
+                $data = array('errno'=>CD_YES, 'error'=>'内容不存在或删除出错');
+            }
+        }
+        else
+            $data = array('errno'=>CD_YES, 'error'=>'非法操作');
+        
+        CDBase::jsonp($callback, $data);
+        exit(0);
+    }
 }
+

@@ -23,7 +23,7 @@
             <td class="group-btn">
                 <button type="button" class="btn btn-mini btn-success btn-qrcode" data-url="<?php echo $model->weixinUrl;?>" target="_blank">浏览</button>
                 <button type="button" data-toggle="button" class="btn btn-mini btn-primary btn-copyurl" data-loading-text="正在复制" data-complete-text="复制成功" data-url="<?php echo $model->weixinUrl;?>">复制链接</button>
-                <button type="button" class="btn btn-mini btn-danger" data-url="<?php echo $model->deleteUrl;?>">删除</button>
+                <button type="button" data-toggle="button" class="btn btn-mini btn-danger btn-delete" data-url="<?php echo $model->deleteUrl;?>" data-loading-text="正在删除" data-error-text="删除出错" data-complete-text="删除">删除</button>
             </td>
         </tr>
         <?php endforeach;?>
@@ -79,6 +79,24 @@ $(function(){
         var qrcodeUrl = 'http://chart.apis.google.com/chart?chs=150x150&cht=qr&chld=L|0&chl=' + pageUrl;
         qrcodeModal.find('.preview-qrcode').attr('src', qrcodeUrl);
         qrcodeModal.modal('show');
+    });
+
+    $(document).on('click', '.btn-delete', function(event){
+        var confirm = window.confirm('您确定要执行删除操作吗？');
+        if (confirm != true) return false;
+        
+        var tthis = $(this);
+        var url = tthis.attr('data-url');
+        var row = tthis.parents('tr');
+        CDAdmin.deleteRow(url, {}, function(data){
+            if (data.errno == 0)
+                row.fadeOut('fast');
+        }, function(){
+            tthis.button('loading');
+        }, function(){
+            tthis.button('error');
+            setTimeout(function(){tthis.button('reset');}, 1500);
+        });
     });
 });
 </script>
