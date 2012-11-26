@@ -44,4 +44,11 @@ class WeixinController extends AdminController
         $this->title = '我的公众账号列表';
         $this->render('list', $data);
     }
+
+    public function actionMsgapi()
+    {
+        $this->breadcrumbs[] = '消息接口';
+        $this->title = '消息接口';
+        $this->render('msgapi');
+    }
 }

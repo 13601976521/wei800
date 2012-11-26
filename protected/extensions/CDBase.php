@@ -8,7 +8,7 @@ class CDBase
     
     public static function powered()
     {
-        return '24blog ' . self::VERSION;
+        return '微800800 ' . self::VERSION;
     }
     
     /**

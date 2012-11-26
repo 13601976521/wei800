@@ -49,8 +49,8 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">帮助<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li <?php if ($this->channel == 'guide') echo 'class="active"';?>><a href="<?php echo url('admin/post/create');?>">新手入门</a></li>
-                        <li <?php if ($this->channel == 'help_skill') echo 'class="active"';?>><a href="<?php echo url('admin/post/create');?>">实用技巧</a></li>
+                        <li <?php if ($this->channel == 'guide') echo 'class="active"';?>><a href="http://www.weixin800.com/help/guide" target="_blank">新手入门</a></li>
+                        <li <?php if ($this->channel == 'help_skill') echo 'class="active"';?>><a href="http://www.weixin800.com/help/trick" target="_blank">实用技巧</a></li>
                     </ul>
                 </li>
             </ul>
@@ -74,9 +74,10 @@
             <li <?php if ($this->channel == 'adweixin_create') echo 'class="active"';?>><a href="<?php echo url('admin/adweixin/create');?>"><i class="icon-chevron-right"></i>添加互推账号</a></li>
             <li <?php if ($this->channel == 'adweixin_list') echo 'class="active"';?>><a href="<?php echo url('admin/adweixin/list');?>"><i class="icon-chevron-right"></i>所有互推账号</a></li>
             <li class="nav-header">我的公众账号</li>
-            <li <?php if ($this->channel == 'weixin_list') echo 'class="active"';?>><a href="<?php echo url('admin/weixin/list');?>"><i class="icon-chevron-right"></i>我的公号列表</a></li>
             <li <?php if ($this->channel == 'weixin_create') echo 'class="active"';?>><a href="<?php echo url('admin/weixin/create');?>"><i class="icon-chevron-right"></i>添加我的公号</a></li>
-        </ul>
+            <li <?php if ($this->channel == 'weixin_list') echo 'class="active"';?>><a href="<?php echo url('admin/weixin/list');?>"><i class="icon-chevron-right"></i>我的公号列表</a></li>
+            <li <?php if ($this->channel == 'weixin_msgapi') echo 'class="active"';?>><a href="<?php echo url('admin/weixin/msgapi');?>"><i class="icon-chevron-right"></i>消息接口</a></li>
+            </ul>
     </div>
     <div class="cd-entry">
         <?php $this->widget('zii.widgets.CBreadcrumbs', array('links'=>$this->breadcrumbs));?>
