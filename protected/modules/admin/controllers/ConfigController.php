@@ -89,5 +89,18 @@ class ConfigController extends AdminController
         $rows = $cmd->queryAll();
         return $rows;
     }
+
+    public function actionFlush()
+    {
+        if (request()->getIsPostRequest()) {
+            CDBase::publishAllThemeResources(true);
+            user()->setFlash('flush_theme_cache_success', '系统缓存更新完毕');
+            $this->redirect(request()->getUrl());
+        }
+        
+        $this->breadcrumbs[] = '更新系统缓存';
+        $this->channel = 'flushcache';
+        $this->render('flush');
+    }
 }
 

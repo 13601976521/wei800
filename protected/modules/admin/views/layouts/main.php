@@ -42,7 +42,8 @@
                         <?php endforeach;?>
                         <li class="nav-header">模板设置</li>
                         <li <?php if ($this->channel == 'selecttheme') echo 'class="active"';?>><a href="<?php echo url('admin/theme/select');?>"><i class="icon-chevron-right"></i>模板选择</a></li>
-                        <li <?php if ($this->channel == 'flushtheme') echo 'class="active"';?>><a href="<?php echo url('admin/theme/flush');?>"><i class="icon-chevron-right"></i>更新缓存</a></li>
+                        <li class="nav-header">更新缓存</li>
+                        <li <?php if ($this->channel == 'flushcache') echo 'class="active"';?>><a href="<?php echo url('admin/config/flush');?>"><i class="icon-chevron-right"></i>更新缓存</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">

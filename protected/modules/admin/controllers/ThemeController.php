@@ -25,19 +25,6 @@ class ThemeController extends AdminController
         ));
     }
     
-    public function actionFlush()
-    {
-        if (request()->getIsPostRequest()) {
-            app()->theme && app()->theme->forcePublishResources();
-            user()->setFlash('flush_theme_cache_success', '当前模板缓存更新完毕');
-            $this->redirect(request()->getUrl());
-        }
-        
-        $this->breadcrumbs[] = '更新缓存';
-        $this->channel = 'flushtheme';
-        $this->render('flush');
-    }
-    
     public function actionReset()
     {
         if (request()->getIsPostRequest()) {

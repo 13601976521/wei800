@@ -297,7 +297,7 @@ class CDBase
         foreach ($names as $name) {
             $theme = tm()->getTheme($name);
             if ($theme !== null) {
-                $data[$name] = $theme->getAssetUrl('screenshoot.png');
+                $data[$name] = $theme->getConfig('screen_shoot');
             }
         }
         return $data;
