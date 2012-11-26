@@ -78,10 +78,10 @@ footer a {display:block; color:#CCC; text-align:center;}
 .cd-post-content table {border-spacing:0; border-collapse:collapse; border:0; margin:10px 0;}
 .cd-post-content table th, .cd-post-content table td {border:1px solid #CFCFCF; padding:5px;}
 
-.button-row {margin:15px auto 0; width:70%;}
+.button-row {margin:15px auto 0; width:60%;}
 
 /* more weixin */
-.more-weixin {margin:15px 0 0; background:white; padding:10px 15px;}
+.more-weixin {margin:15px 0 0; background:white; padding:10px;}
 .avatar {display:inline-block; width:46px; margin:0; padding:3px; overflow:hidden; border-radius:26px; -webkit-border-radius:26px; border:1px solid #DFDFDF; box-shadow:1px 1px 1px #DFDFDF;}
 .avatar:active, .more-weixin li img:active {opacity:.5;}
 .avatar img {width:100%; border-radius:23px; -webkit-border-radius:23px;}

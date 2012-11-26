@@ -13,7 +13,7 @@
     <div class="cd-content-box">
         <div class="cd-post-content"><?php echo $content;?></div>
         <div class="button-row">
-            <button type="button" data-action="wxshare" class="btn btn-block btn-large" type="button">分享至朋友圈</button>
+            <button type="button" data-action="wxshare" class="btn btn-block" type="button">分享至朋友圈</button>
         </div>
     </div>
     <?php endforeach;?>
