@@ -66,9 +66,9 @@ footer a {display:block; color:#CCC; text-align:center;}
 .wx-container .line1px {height:1px; line-height:1px; font-size:0; background-color:#DFDFDF; margin:15px 0 10px;}
 
 /* post/show */
-.wx-header {background:white; padding:15px;}
-.cd-content-box {margin:10px 0; padding:15px; background:white; overflow-x:hidden; border-radius:8px; -webkit-border-radius:8px;}
-.cd-post-content {font-size:16px; line-height:24px; word-wrap:break-word;}
+.wx-header {background:white; padding:10px 5px;}
+.cd-content-box {margin:10px 0; padding:10px; background:white; overflow-x:hidden; border-radius:8px; -webkit-border-radius:8px;}
+.cd-post-content {font-size:16px; line-height:24px;}
 .cd-post-content img {margin-left:auto; margin-right:auto;}
 .cd-post-content p {line-height:24px; margin:5px 0 10px;}
 .cd-post-content blockquote {padding: 10px; background:#EFEFEF; color:#555; font-size:14px; margin:15px 10px; border-radius:3px;}
