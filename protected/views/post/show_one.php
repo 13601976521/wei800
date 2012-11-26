@@ -1,5 +1,5 @@
 <div class="wx-container">
-    <div class="wx-header">
+    <div class="wx-header box-shadow">
         <h1 class="title"><?php echo $post->title;?></h1>
         <a data-action="wxfollow" class="btn-focus" href="javascript:void(0);" data-wxid="<?php echo $weixin->original_wxid;?>" data-id="<?php echo $post->id;?>">
             <div class="avatar"><?php echo $weixin->circleAvatarImage;?></div>
@@ -10,7 +10,7 @@
      </div>
     
     <?php foreach ($post->filterContents as $content):?>
-    <div class="cd-content-box">
+    <div class="cd-content-box box-shadow">
         <div class="cd-post-content"><?php echo $content;?></div>
         <div class="button-row">
             <button type="button" data-action="wxshare" class="btn btn-block btn-large" type="button">分享至朋友圈</button>
@@ -19,7 +19,7 @@
     <?php endforeach;?>
     
     <?php if ($adweixinCount > 0):?>
-    <div class="more-weixin">
+    <div class="more-weixin box-shadow">
         <div class="more-title">更多精彩更多微信<span>(欢迎点击添加关注)</span></div>
         <?php foreach ($lineShowWeixin as $adwx):?>
         <dl data-action="wxfollow" class="clearfix" data-wxid="<?php echo $adwx->original_wxid;?>" data-id="<?php echo $adwx->id;?>">
