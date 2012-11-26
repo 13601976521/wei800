@@ -6,7 +6,6 @@
 <?php endif;?>
 
 <?php echo CHtml::form('', 'post', array('class'=>'form-horizontal post-form', 'enctype'=>'multipart/form-data'));?>
-<?php echo CHtml::activeHiddenField($model, 'type_id');?>
 <fieldset>
     <legend><?php echo $this->title;?></legend>
     <div class="control-group <?php if($model->hasErrors('weixin_id')) echo 'error';?>">

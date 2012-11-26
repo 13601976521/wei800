@@ -37,8 +37,7 @@ class PostController extends Controller
         
         $this->pageTitle = $post->title;
         
-        $view = $post->type_id == POST_TYPE_GROUP ? 'show_group' : 'show_one';
-        $this->render($view, array(
+        $this->render('show', array(
             'post' => $post,
             'weixin' => $post->weixin,
             'adweixinCount' => count($post->getAdWeixinIDArray()),

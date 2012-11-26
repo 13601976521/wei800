@@ -7,7 +7,6 @@
  * @property integer $id
  * @property integer $weixin_id
  * @property integer $user_id
- * @property integer $type_id
  * @property string $title
  * @property string $content
  * @property integer $view_count
@@ -37,21 +36,6 @@
  */
 class Post extends CActiveRecord
 {
-    public static function types()
-    {
-        return array(POST_TYPE_ONE, POST_TYPE_GROUP);
-    }
-    
-    public static function typeLabels($id = null)
-    {
-        $labels = array(
-            POST_TYPE_ONE => '单篇文章',
-            POST_TYPE_GROUP => '文章列表',
-        );
-        
-        return ($id === null) ? $labels : $labels[$id];
-    }
-    
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return Post the static model class
@@ -75,12 +59,11 @@ class Post extends CActiveRecord
 	public function rules()
 	{
 		return array(
-	        array('weixin_id, user_id, type_id, title, content', 'required'),
-	        array('weixin_id, user_id, type_id, view_count, back_count, share_count, comment_count, create_time, ad_line_count', 'numerical', 'integerOnly'=>true),
+	        array('weixin_id, user_id, title, content', 'required'),
+	        array('weixin_id, user_id, view_count, back_count, share_count, comment_count, create_time, ad_line_count', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>200),
 			array('create_ip', 'length', 'max'=>15),
 			array('content, ad_accounts', 'safe'),
-	        array('type_id', 'in', 'range'=>self::types()),
 		);
 	}
 
@@ -103,7 +86,6 @@ class Post extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-		    'type_id' => '内容类型',
 			'weixin_id' => '绑定微信ID',
 			'user_id' => '用户ID',
 			'title' => '标题',
@@ -224,28 +206,6 @@ class Post extends CActiveRecord
 	    return $models;
 	}
 	
-	public function getGroupPosts()
-	{
-	    static $posts = null;
-	    if ($posts !== null) return $posts;
-	    
-	    $posts = array();
-	    if ($this->type_id == POST_TYPE_GROUP && $this->content) {
-	        $ids = explode(POST_GROUP_ID_DIVIDER, $this->content);
-	        $ids = self::filterIDs($ids);
-	        if (empty($ids)) return $posts;
-	        
-	        $criteria = new CDbCriteria();
-	        $criteria->addInCondition('id', $ids);
-	        $models = Post::model()->findAll($criteria);
-	        foreach ($ids as $id)
-	            foreach ($models as $model)
-	                if ($id == $model->id) $posts[] = $model;
-	    }
-	        
-        return $posts;
-	}
-	
 	public function getContents()
 	{
 	    static $contents = null;
@@ -303,9 +263,6 @@ class Post extends CActiveRecord
 	        $this->create_time = time();
 	        $this->create_ip = CDBase::getClientIp();
 	    }
-	    
-	    if ($this->type_id == POST_TYPE_GROUP)
-	        $this->content = strip_tags(trim($this->content));
 	    
 	    return true;
 	}

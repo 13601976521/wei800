@@ -12,7 +12,6 @@ class PostController extends AdminController
         if ($model->getIsNewRecord()) {
             $model->ad_line_count = param('ad_weixin_default_line_show_count');
             $model->weixin_id = CDCache::fetchLastCreatePostWxid();
-            $model->type_id = $type;
         }
         else
             $model->ad_accounts AND $model->ad_accounts = $model->getAdWeixinIDArray();
