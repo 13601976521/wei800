@@ -13,7 +13,7 @@ a:hover,a:active{outline:0;}
 sub,sup{position:relative;font-size:75%;line-height:0;vertical-align:baseline;}
 sup{top:-0.5em;}
 sub{bottom:-0.25em;}
-img{max-width:100%;width:auto\9;height:auto;vertical-align:middle;border:0;-ms-interpolation-mode:bicubic;}
+img{max-width:100%;height:auto;vertical-align:middle;border:0;}
 #map_canvas img,.google-maps img{max-width:none;}
 button,input,select,textarea{margin:0;font-size:100%;vertical-align:middle;}
 button,input{*overflow:visible;line-height:normal;}
@@ -55,20 +55,22 @@ body {margin:0; padding:0; line-height:20px; font-size:14px; color:#333333; font
 a {color:#1F3B7B; text-decoration:none;}
 a:hover {color:#D14836; text-decoration:none;}
 
-body.wx-mobile {background-color:#CFCFCF;}
 header {background:black url(../images/header_bg.jpg) no-repeat; overflow:hidden; margin-bottom:10px;}
 header a {width:250px; height:60px; text-indent:-9999px; display:block;}
 footer {font-size:12px; margin:0; background-color:#333; color:#666666; padding:7px;}
 footer a {display:block; color:#CCC; text-align:center;}
 
-.wx-container {margin:5px 5px 10px; background:white; padding:10px 10px; line-height:24px;}
+.wx-wrapper {background:#EFEFEF; margin:0; padding:0;}
+.wx-container {margin:0 10px; line-height:24px;}
 .wx-container .title {font-size:20px; margin:5px 0 20px; line-height:20px;}
 .wx-container .line1px {height:1px; line-height:1px; font-size:0; background-color:#DFDFDF; margin:15px 0 10px;}
 
 /* post/show */
-.cd-post-content {font-size:16px; line-height:24px; margin:15px 0 0; word-wrap:break-word; overflow-x:hidden;}
+.wx-header {background:white; padding:15px;}
+.cd-content-box {margin:10px 0; padding:15px; background:white; overflow-x:hidden; border-radius:8px; -webkit-border-radius:8px;}
+.cd-post-content {font-size:16px; line-height:24px; word-wrap:break-word;}
 .cd-post-content img {margin-left:auto; margin-right:auto;}
-.cd-post-content p {line-height:24px; margin-bottom:18px;}
+.cd-post-content p {line-height:24px; margin:5px 0 10px;}
 .cd-post-content blockquote {padding: 10px; background:#EFEFEF; color:#555; font-size:14px; margin:15px 10px; border-radius:3px;}
 .cd-post-content blockquote p {font-size:14px;}
 .cd-post-content ul {margin:1px 0 15px 30px;}
@@ -79,13 +81,13 @@ footer a {display:block; color:#CCC; text-align:center;}
 .button-row {margin:15px auto 0; width:70%;}
 
 /* more weixin */
-.more-weixin {margin:15px 0 0;}
+.more-weixin {margin:15px 0 0; background:white; padding:10px 15px;}
 .avatar {display:inline-block; width:46px; margin:0; padding:3px; overflow:hidden; border-radius:26px; -webkit-border-radius:26px; border:1px solid #DFDFDF; box-shadow:1px 1px 1px #DFDFDF;}
 .avatar:active, .more-weixin li img:active {opacity:.5;}
 .avatar img {width:100%; border-radius:23px; -webkit-border-radius:23px;}
 .more-weixin .more-title {font-size:16px; font-weight:normal; border-bottom:1px dashed #DFDFDF; margin-bottom:10px;;}
 .more-weixin .more-title span {font-size:12px; color:#9F9F9F; margin-left:5px;}
-.more-weixin dl {border-bottom:1px dashed #DFDFDF; padding:0; margin:10px 0; cursor:pointer; position:relative; height:64px;}
+.more-weixin dl {border-bottom:1px dashed #DFDFDF; padding:0; margin:10px 0 0; cursor:pointer; position:relative; height:64px;}
 .more-weixin .wxname {position:absolute; top:0; left:70px; font-size:14px; font-weight:bold;}
 .more-weixin dd {position:absolute; top:25px; left:70px; color:#9F9F9F; line-height:14px; font-size:12px; margin:0;}
 .more-weixin .avatar {position:absolute; top:0; left:0;}

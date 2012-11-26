@@ -65,8 +65,8 @@ $(function(){
             button.button('loading');
         });
         clip.addEventListener('onComplete', function(client, text){
-        	button.button('complete');
-        	setTimeout(function(){button.button('reset');}, 1000);
+        	button.button('complete').toggleClass('btn-primary btn-warning');
+        	setTimeout(function(){button.button('reset').toggleClass('btn-primary btn-warning');}, 1000);
         });
     });
 
