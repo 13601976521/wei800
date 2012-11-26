@@ -22,7 +22,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">我的微信账号<b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">账号管理<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li class="nav-header">互推账号管理</li>
                         <li <?php if ($this->channel == 'adweixin_create') echo 'class="active"';?>><a href="<?php echo url('admin/adweixin/create');?>"><i class="icon-chevron-right"></i>添加互推账号</a></li>

@@ -25,7 +25,7 @@
     </div>
     <?php foreach ($model->getContents() as $index => $content):?>
     <div class="contents-box control-group <?php if($model->hasErrors('content') && $index == 0) echo 'error';?>">
-        <?php echo CHtml::activeLabel($model, 'content', array('class'=>'control-label'));?>
+        <label class="control-label">内容</label>
         <div class="controls">
             <?php if($model->hasErrors('content') && $index == 0):?>
                 <p class="help-block"><?php echo $model->getError('content');?></p>
@@ -37,7 +37,7 @@
     <?php endforeach;?>
     <div class="form-actions">
         <a class="btn" href="<?php echo $model->listUrl;?>">返回列表</a>
-        <input type="button" value="再添加一段内容" class="btn btn-inverse" id="new-content" />
+        <input type="button" value="再添加一段内容" class="btn btn-danger" id="new-content" />
         <input type="submit" value="提交保存" class="btn btn-primary" />
     </div>
     <div class="control-group <?php if($model->hasErrors('ad_accounts')) echo 'error';?>">
@@ -91,10 +91,22 @@ $(function(){
 	    $('#adaccounts').val(adaccounts);
 	});
 
+	$(document).on('click', '.delete-content', function(){
+		$(this).parents('.contents-box').slideUp('fast', function(){$(this).remove();});
+	});
+	
     KindEditor.ready(function(K) {
     	KEConfig.weixin.cssPath = ['<?php echo sbu('css/cd-weixin.css');?>'];
     	KEConfig.weixin.uploadJson = '<?php echo aurl('upload/image');?>';
     	K.create('.post-content', KEConfig.weixin);
+
+    	$('#new-content').on('click', function(){
+        	var count = $('.contents-box').length + 1;
+    		var html = '<div class="contents-box control-group"><label class="control-label" for="AdminPost_content">内容<br /></label><div class="controls"><p class="help-block">第&nbsp;<em>' + count + '</em>&nbsp;段内容</p><textarea class="post-content" name="content[]" id="new-content"></textarea><p class="help-block"><input type="button" class="btn btn-mini btn-danger delete-content" value="删除此段内容" /></div></div></div>';
+    		$('.contents-box:last').after(html);
+    		KindEditor.create('#new-content', KEConfig.weixin);
+    		$('#new-content').removeAttr('id');
+    	});
     });
 });
 </script>
