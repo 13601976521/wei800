@@ -38,6 +38,8 @@ class SiteController extends Controller
     
     public function actionSignup()
     {
+        $this->redirect(CDBase::loginUrl());
+        
         if (!user()->getIsGuest()) {
             $this->redirect(CDBase::adminHomeUrl());
             exit(0);

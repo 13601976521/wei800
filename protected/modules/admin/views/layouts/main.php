@@ -50,13 +50,15 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">帮助<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li <?php if ($this->channel == 'guide') echo 'class="active"';?>><a href="http://www.weixin800.com/help/guide" target="_blank">新手入门</a></li>
-                        <li <?php if ($this->channel == 'help_skill') echo 'class="active"';?>><a href="http://www.weixin800.com/help/trick" target="_blank">实用技巧</a></li>
+                        <li><a href="http://www.weixin800.com/static/about" target="_blank">关于我们</a></li>
+                        <li><a href="http://www.weixin800.com/help/guide" target="_blank">新手入门</a></li>
+                        <li><a href="http://www.weixin800.com/help/trick" target="_blank">实用技巧</a></li>
                     </ul>
                 </li>
             </ul>
             <ul class="nav pull-right">
-                <li><a href="http://mp.weixin.qq.com" target="_blank">腾讯公众平台</a></li>
+                <li><a href="http://www.weixin800.com/" target="_blank">微信800官网</a></li>
+                <li><a href="http://mp.weixin.qq.com/" target="_blank">腾讯公众平台</a></li>
                 <!-- <li><?php echo l('网站首页', CDBase::siteHomeUrl(), array('target'=>'_blank'));?></li> -->
                 <li <?php if ($this->channel == 'profile') echo 'class="active"';?>><?php echo l(user()->name, url('admin/profile/info'));?></li>
                 <li><?php echo l('退出登录', CDBase::logoutUrl());?></li>
