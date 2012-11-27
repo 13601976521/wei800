@@ -1,6 +1,4 @@
 <div class="alert alert-block alert-info wei800-intro">
-    <h4>微800 介绍</h4>
-    <p>微800，是由<a href="http://www.weixin800.com/" target="_blank">微信800微信运营平台</a>推出的单用户版开源运营平台。主要由原微信800运营平台的多用户版修改而来，保持了原平台管理界面简洁，使用方便的特点。</p>
     <h4>微页面主要功能：</h4>
     <ul>
         <li>公众帐号品牌展示</li>
