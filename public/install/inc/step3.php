@@ -14,8 +14,9 @@ if (strtolower($_SERVER['REQUEST_METHOD']) == 'post') {
     if ($conn && $result) {
         $dbSeverStatus = true;
         
-        $sql = 'select now()';
+        $sql = fetchsql();
         $query = mysql_query($sql, $conn);
+        echo mysql_error();
         if ($query !== false) {
             $createTableResult = true;
             $_SESSION['db_install_success'] = 1;

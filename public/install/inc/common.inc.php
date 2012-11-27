@@ -77,3 +77,20 @@ function installLockFileExist()
     return file_exists($filename);
 }
 
+function fetchsql()
+{
+    $filename = dirname(__FILE__) . DS . 'wei800.sql';
+    if (file_exists($filename) && is_readable($filename)) {
+        $sql = file_get_contents($filename);
+        if ($sql ===  false) {
+            echo "读取sql文件{$filename}失败。";
+            exit(0);
+        }
+        else
+            return $sql;
+    }
+    else {
+        echo $filename . '不存在或不可读';
+        exit(0);
+    }
+}
