@@ -42,24 +42,38 @@ function renderFile($_file, $_params=array())
 
 function checkRuntimeAccess()
 {
-    $path = dirname(__FILE__) . DS . '..' . DS . '..' . DS . '..' . DS . 'protected' . DS . 'runtime';
+    $path = PATH_ROOT . DS . '..' . DS . '..' . DS . 'protected' . DS . 'runtime';
     return file_exists($path) && is_writable($path);
 }
 
 function checkDataAccess()
 {
-    $path = dirname(__FILE__) . DS . '..' . DS . '..' . DS . '..' . DS . 'protected' . DS . 'data';
+    $path = PATH_ROOT . DS . '..' . DS . '..' . DS . 'protected' . DS . 'data';
     return file_exists($path) && is_writable($path);
 }
 
 function checkUploadAccess()
 {
-    $path = dirname(__FILE__) . DS . '..' . DS . '..' . DS . '..' . DS . 'uploads';
+    $path = PATH_ROOT . DS . '..' . DS . '..' . DS . 'uploads';
     return file_exists($path) && is_writable($path);
 }
 
 function checkAssetsAccess()
 {
-    $path = dirname(__FILE__) . DS . '..' . DS . '..' . DS . '..' . DS . 'resources' . DS . 'assets';
+    $path = PATH_ROOT . DS . '..' . DS . '..' . DS . 'resources' . DS . 'assets';
     return file_exists($path) && is_writable($path);
 }
+
+function createInstallLockFile()
+{
+    $filename = PATH_ROOT . DS . '..' . DS . '..' . DS . 'protected' . DS . 'data' . DS . 'install.lock';
+    $result = file_put_contents($filename, '1');
+    return $result;
+}
+
+function installLockFileExist()
+{
+    $filename = PATH_ROOT . DS . '..' . DS . '..' . DS . 'protected' . DS . 'data' . DS . 'install.lock';
+    return file_exists($filename);
+}
+

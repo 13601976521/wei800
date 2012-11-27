@@ -4,9 +4,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>微800 安装向导</title>
     <link media="screen" rel="stylesheet" type="text/css" href="./res/bootstrap/css/bootstrap.min.css" />
-    <link media="screen" rel="stylesheet" type="text/css" href="./res/beta-install.css" />
-    <script type="text/javascript" src="./res/jquery.min.js"></script>
-    <script type="text/javascript" src="./res/beta-install.js"></script>
+    <link media="screen" rel="stylesheet" type="text/css" href="./res/cd-install.css" />
 </head>
 <body>
 <div class="beta-container">
@@ -17,7 +15,8 @@
         <li <?php echo $step == 0 ? 'class="active"' : '';?>>微800安装向导</li>
         <li <?php echo $step == 1 ? 'class="active"' : '';?>>第一步：检测系统环境</li>
         <li <?php echo $step == 2 ? 'class="active"' : '';?>>第二步：填写网站基本信息</li>
-        <li <?php echo $step == 3 ? 'class="active"' : '';?>>第三步：安装完成</li>
+        <li <?php echo $step == 3 ? 'class="active"' : '';?>>第三步：安装数据库</li>
+        <li <?php echo $step == 4 ? 'class="active"' : '';?>>第四步：安装完成</li>
         <div class="clear"></div>
     </ul>
     <div class="beta-entry">

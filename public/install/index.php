@@ -5,7 +5,12 @@ session_start();
 require PATH_ROOT . 'inc' . DS . 'common.inc.php';
 
 $step = (int)$_GET['step'];
-if ($step >= 1 && $step <= 3)
+if (installLockFileExist() && $step < 4) {
+    echo 'install.lock文件已经存在，请先删除此文件。';
+    exit(0);
+}
+
+if ($step >= 1 && $step <= 4)
     $file = 'step' . $step . '.php';
 else
     $file = 'index.php';
@@ -25,6 +30,12 @@ switch ($step)
         break;
     case 3:
         require PATH_ROOT . 'inc' . DS . 'step3.php';
+        $data['dbSeverStatus'] = $dbSeverStatus;
+        $data['createTableResult'] = $createTableResult;
+        $data['validRequest'] = $validRequest;
+        break;
+    case 4:
+        require PATH_ROOT . 'inc' . DS . 'step4.php';
         break;
     default:
         break;
