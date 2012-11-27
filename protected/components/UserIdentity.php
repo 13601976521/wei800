@@ -7,7 +7,7 @@
  */
 class UserIdentity extends CUserIdentity
 {
-    const ERROR_STATE_FORBIDDEN = 1000;
+    const ERROR_STATE_FORBIDDEN = 100;
     
     private $_id;
     private $_name;
