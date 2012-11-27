@@ -31,6 +31,7 @@
                         <li class="nav-header">我的公众账号</li>
                         <li <?php if ($this->channel == 'weixin_list') echo 'class="active"';?>><a href="<?php echo url('admin/weixin/list');?>"><i class="icon-chevron-right"></i>我的公号列表</a></li>
                         <li <?php if ($this->channel == 'weixin_create') echo 'class="active"';?>><a href="<?php echo url('admin/weixin/create');?>"><i class="icon-chevron-right"></i>添加我的公号</a></li>
+                        <li <?php if ($this->channel == 'weixin_msgapi') echo 'class="active"';?>><a href="<?php echo url('admin/weixin/msgapi');?>"><i class="icon-chevron-right"></i>消息接口</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -56,7 +57,7 @@
             </ul>
             <ul class="nav pull-right">
                 <li><a href="http://mp.weixin.qq.com" target="_blank">腾讯公众平台</a></li>
-                <li><?php echo l('网站首页', CDBase::siteHomeUrl(), array('target'=>'_blank'));?></li>
+                <!-- <li><?php echo l('网站首页', CDBase::siteHomeUrl(), array('target'=>'_blank'));?></li> -->
                 <li <?php if ($this->channel == 'profile') echo 'class="active"';?>><?php echo l(user()->name, url('admin/profile/info'));?></li>
                 <li><?php echo l('退出登录', CDBase::logoutUrl());?></li>
             </ul>
@@ -77,7 +78,7 @@
             <li <?php if ($this->channel == 'weixin_create') echo 'class="active"';?>><a href="<?php echo url('admin/weixin/create');?>"><i class="icon-chevron-right"></i>添加我的公号</a></li>
             <li <?php if ($this->channel == 'weixin_list') echo 'class="active"';?>><a href="<?php echo url('admin/weixin/list');?>"><i class="icon-chevron-right"></i>我的公号列表</a></li>
             <li <?php if ($this->channel == 'weixin_msgapi') echo 'class="active"';?>><a href="<?php echo url('admin/weixin/msgapi');?>"><i class="icon-chevron-right"></i>消息接口</a></li>
-            </ul>
+        </ul>
     </div>
     <div class="cd-entry">
         <?php $this->widget('zii.widgets.CBreadcrumbs', array('links'=>$this->breadcrumbs));?>

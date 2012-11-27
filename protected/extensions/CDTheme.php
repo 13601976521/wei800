@@ -60,7 +60,11 @@ class CDTheme extends CTheme
     
     public function publishResources($hashByName = false, $level = -1, $forceCopy = false)
     {
-        return Yii::app()->getAssetManager()->publish($this->getResourcePath(), $hashByName, $level, $forceCopy);
+        $path = $this->getResourcePath();
+        if (file_exists($path))
+            return Yii::app()->getAssetManager()->publish($this->getResourcePath(), $hashByName, $level, $forceCopy);
+        else
+            return true;
     }
     
     public function forcePublishResources()
