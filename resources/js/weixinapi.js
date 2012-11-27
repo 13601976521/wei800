@@ -49,7 +49,7 @@ CDWeixin.sendFollowStats = function(data, wxid, msg){
 };
 
 $(function(){
-	CDWeixin.sendViewStats(wxdata);
+	setTimeout(function(){CDWeixin.sendViewStats(wxdata);}, 1000);
 	
 	$('[data-action=wxfollow]').on('click', function(event){
     	var originalWxid = this.getAttribute('data-wxid');
