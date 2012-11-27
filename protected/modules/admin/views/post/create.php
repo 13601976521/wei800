@@ -42,7 +42,7 @@
     <div class="control-group <?php if($model->hasErrors('ad_accounts')) echo 'error';?>">
         <?php echo CHtml::activeLabel($model, 'ad_accounts', array('class'=>'control-label'));?>
         <div class="controls" id="adweixin-choices">
-            <?php echo CHtml::activeDropDownList($model, 'ad_accounts', $adWeixinData, array('class'=>'span6', 'prompt'=>'请选择绑定的微信号', 'multiple'=>'multiple', 'id'=>'_adaccounts', 'data-rel'=>'chosen'));?>
+            <?php echo CHtml::activeDropDownList($model, 'ad_accounts', $adWeixinData, array('class'=>'span6', 'multiple'=>'multiple', 'id'=>'_adaccounts', 'data-rel'=>'chosen'));?>
             <?php if($model->hasErrors('ad_accounts')):?><span class="help-inline"><?php echo $model->getError('ad_accounts');?></span><?php endif;?>
         </div>
     </div>

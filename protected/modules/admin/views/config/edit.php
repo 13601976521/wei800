@@ -39,7 +39,7 @@
                 </td>
                 <td>
                 <?php if (strlen($model['config_value']) < 50):?>
-                    <input class="span5" type="text" name="AdminConfig[<?php echo $model['config_name'];?>]" value="<?php echo h($model['config_value']);?>" />
+                    <input class="span4" type="text" name="AdminConfig[<?php echo $model['config_name'];?>]" value="<?php echo h($model['config_value']);?>" />
                 <?php else:?>
                     <textarea class="span6" name="AdminConfig[<?php echo $model['config_name'];?>]"><?php echo h($model['config_value']);?></textarea>
                 <?php endif;?>

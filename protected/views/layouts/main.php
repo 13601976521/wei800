@@ -23,7 +23,7 @@
 
 <div id="footer" class="ac clearfix">
     <a href="http://www.weixin800.com/static/intro">Powered by 微800 专业微信运营平台</a>&nbsp;&nbsp;
-    <?php echo param('beian_code');?>
+    <?php if (param('beian_code')) echo param('beian_code');?>
 </div>
 </body>
 </html>
