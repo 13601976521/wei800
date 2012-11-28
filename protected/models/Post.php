@@ -93,6 +93,7 @@ class Post extends CActiveRecord
 			'user_id' => '用户ID',
 			'title' => '标题',
 			'content' => '内容',
+			'theme_name' => '模板',
 			'view_count' => '查看数',
 			'back_count' => '回流数',
 			'share_count' => '分享数',
@@ -165,12 +166,12 @@ class Post extends CActiveRecord
 	
 	public function getWeixinUrl()
 	{
-	    return aurl('post/show', array('id'=>$this->id));
+	    return aurl('weixin/post', array('id'=>$this->id));
 	}
 
 	public function getBackUrl()
 	{
-	    return aurl('post/show', array('id'=>$this->id, 'back'=>1));
+	    return aurl('weixin/post', array('id'=>$this->id, 'back'=>1));
 	}
 	
 	public function getAdWeixinIDArray()

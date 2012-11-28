@@ -106,13 +106,6 @@ return array(
         'widgetFactory'=>array(
             'enableSkin'=>true,
         ),
-        'authManager' => array(
-            'class' => 'CDbAuthManager',
-            'assignmentTable' => '{{auth_assignment}}',
-            'itemChildTable' => '{{auth_itemchild}}',
-            'itemTable' => '{{auth_item}}',
-            'defaultRoles' => array('member'),
-        ),
         'urlManager' => array(
             'urlFormat' => in_array($params['url_format'], array('get', 'path')) ? $params['url_format'] : 'get',
 		    'showScriptName' => false,
@@ -120,10 +113,10 @@ return array(
             'cacheID' => 'cache',
             'rules' => array(
                 '' => 'site/index',
-                'p/<id:\d+>' => 'post/show',
-                'post/<_a>' => 'post/<_a>',
-                'wx/<id:\d+>' => 'weixin/index',
-                '<_a:(login|signup|logout)>' => 'site/<_a>',
+                'p/<id:\d+>' => 'weixin/post',
+                'gh/<id:\d+>' => 'weixin/gh',
+                'weixin/<_a>' => 'weixin/<_a>',
+                '<_a:(login|logout)>' => 'site/<_a>',
             ),
         ),
     ),

@@ -218,7 +218,7 @@ class Weixin extends CActiveRecord
 	
 	public function getHomeUrl()
 	{
-	    return aurl('weixin/index', array('id'=>$this->id));
+	    return aurl('weixin/gh', array('id'=>$this->id));
 	}
 	
 	protected function beforeSave()

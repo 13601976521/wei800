@@ -15,6 +15,17 @@
             <?php if($model->hasErrors('weixin_id')):?><span class="help-inline"><?php echo $model->getError('weixin_id');?></span><?php endif;?>
         </div>
     </div>
+    <div class="control-group <?php if($model->hasErrors('theme_name')) echo 'error';?>">
+        <?php echo CHtml::activeLabel($model, 'theme_name', array('class'=>'control-label'));?>
+        <div class="controls">
+            <?php echo CHtml::activeDropDownList($model, 'theme_name', $themes, array('prompt'=>'请选择模板', 'id'=>'cd-themes'));?>
+            <?php if($model->hasErrors('theme_name')):?>
+                <span class="help-inline"><?php echo $model->getError('theme_name');?></span>
+            <?php else:?>
+                <span class="help-inline"><a href="http://www.weixin800.com/themes" target="_blank">下载模板</a></span>
+            <?php endif;?>
+        </div>
+    </div>
     <div class="control-group <?php if($model->hasErrors('title')) echo 'error';?>">
         <?php echo CHtml::activeLabel($model, 'title', array('class'=>'control-label', 'id'=>'post-title'));?>
         <div class="controls">
@@ -66,7 +77,7 @@
 <script type="text/javascript">
 $(function(){
 	$('#post-title').focus();
-	$('#bind-weixin').chosen({
+	$('#bind-weixin, #cd-themes').chosen({
     	'no_results_text': '没有找到匹配的内容'
 	});
 	$('#_adaccounts').chosen({

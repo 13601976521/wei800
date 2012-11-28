@@ -2,7 +2,7 @@
 /**
  * 此文件为默认配置文件，请勿修改
  */
-$path = str_replace($_SERVER['DOCUMENT_ROOT'], '', $_SERVER['SCRIPT_FILENAME']);
+$path = str_replace($_SERVER['DOCUMENT_ROOT'], 'http://' . $_SERVER['HTTP_HOST'], $_SERVER['SCRIPT_FILENAME']);
 $path = dirname($path);
 $path = rtrim($path, '/') . '/';
 
@@ -40,10 +40,11 @@ return array(
     'formatTime' => 'H:i:s',
     'formatShortTime' => 'H:i',
         
-    'url_format' => 'path',
-    'wx_post_show_format' => 'p/<id:\d+>',
+    'url_format' => 'get',
         
     'cache_enable' => 0,
+    // 微信内容页默认缓存失效时间，5分钟
+    'weixin_post_cache_time' => 60 * 5,
 
     // 推广账号默认单行显示数量
     'ad_weixin_default_line_show_count' => 0,
@@ -54,10 +55,7 @@ return array(
     'beian_code' => '',
     'tongji_code' => '',
     'header_html' => '',
-    'footer_after_html' => '',
-    'footer_before_html' => '',
-    'user_required_email_verfiy' => 0,
-    'user_required_admin_verfiy' => 0,
+    'footer_html' => '',
     'auto_remote_image_local' => 0,
 );
 

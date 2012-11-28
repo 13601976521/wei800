@@ -33,12 +33,19 @@ class PostController extends AdminController
             }
         }
         
+        $themes = tm()->getThemeNames();
+        if ($themes)
+            $themes = array_combine(tm()->getThemeNames(), tm()->getThemeNames());
+        else
+            $themes = array();
+        
         $this->channel = $type == POST_TYPE_ONE ? 'post_create_one' : 'post_create_group';
         $this->title = '添加内容';
         $this->render('create', array(
             'model' => $model,
             'weixinData' => CHtml::listData($this->user->weixins, 'id', 'wxname'),
             'adWeixinData' => $this->fetchSortAdweixins($model),
+            'themes' => $themes,
         ));
     }
     

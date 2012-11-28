@@ -5,6 +5,9 @@
 </div>
 <?php endif;?>
 
+<?php if (count($themes) == 0):?>
+<div class="alert alert-warning">当前系统没有安装模板，系统使用默认模板，<a href="http://www.weixin800.com/themes" target="_blank">下载模板</a></div>
+<?php else:?>
 <div class="alert alert-info">
     <button type="button" data-dismiss="alert" class="close">&times;</button>
     如果要使用系统默认模板，请点击当前模板的红色按钮
@@ -33,3 +36,4 @@
     </li>
     <?php endforeach;?>
 </ul>
+<?php endif;?>
