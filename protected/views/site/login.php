@@ -1,4 +1,4 @@
-<div class="cd-container fleft">
+<div class="cd-conta2iner fle2ft">
     <?php echo CHtml::form('', 'post', array('class'=>'form-horizontal login-form'));?>
     <fieldset>
         <legend>欢迎登录 <?php echo app()->name;?></legend>
@@ -44,7 +44,3 @@
     </fieldset>
     <?php echo chtml::endForm();?>
 </div>
-<div class="cd-sidebar fright">
-    <p class="quick-login-signup">&gt;&nbsp;我还没有<strong><?php echo app()->name;?></strong>帐号?&nbsp;<a href="<?php echo CDBase::signupUrl();?>">马上注册</a></p>
-</div>
-<div class="clear"></div>
