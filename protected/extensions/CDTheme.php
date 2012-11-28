@@ -24,60 +24,8 @@ class CDTheme extends CTheme
             return $config[$name];
     }
     
-    public function getResourcePath()
-    {
-        return $this->getBasePath() . DIRECTORY_SEPARATOR . 'resources';
-    }
-    
-    public function getAssetPath($file = null, $hashByName = false)
-    {
-        static $basePath = array();
-        if ($basePath[$this->name] === null)
-            $basePath[$this->name] = Yii::app()->getAssetManager()->getPublishedPath($this->getResourcePath(), $hashByName);
-        
-        if (empty($basePath[$this->name])) return false;
-        
-        if (empty($file))
-            return $basePath[$this->name];
-        else
-            return $basePath[$this->name] . DS . ltrim($file, DS);
-        
-    }
-    
-    public function getAssetUrl($file = null, $hashByName = false)
-    {
-        static $baseUrl = array();
-        if ($baseUrl[$this->name] === null)
-            $baseUrl[$this->name] = Yii::app()->getAssetManager()->getPublishedUrl($this->getResourcePath(), $hashByName);
-        
-        if (empty($baseUrl[$this->name])) return false;
-        
-        if (empty($file))
-            return $baseUrl[$this->name];
-        else
-            return $baseUrl[$this->name] . '/' . ltrim($file, '/');
-    }
-    
-    public function publishResources($hashByName = false, $level = -1, $forceCopy = false)
-    {
-        $path = $this->getResourcePath();
-        if (file_exists($path))
-            return Yii::app()->getAssetManager()->publish($this->getResourcePath(), $hashByName, $level, $forceCopy);
-        else
-            return true;
-    }
-    
-    public function forcePublishResources()
-    {
-        return $this->publishResources(false, -1, true);
-    }
-    
     protected function getConfigFile()
     {
         return $this->getBasePath() . DIRECTORY_SEPARATOR . 'config.php';
     }
-    
 }
-
-
-

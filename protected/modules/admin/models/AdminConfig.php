@@ -60,7 +60,7 @@ class AdminConfig extends Config
     
     public static function cacheFilename()
     {
-        return dp(param('custom_config_filename'));
+        return dp('setting.config.php');
     }
 
     protected function beforeDelete()

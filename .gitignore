@@ -1,5 +1,5 @@
 uploads/
-resources/assets/
+assets/
 protected/data/
 protected/runtime/
 .DS_Store

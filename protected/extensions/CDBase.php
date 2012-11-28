@@ -275,21 +275,6 @@ class CDBase
     
     
     /*************************** theme functions *****************************/
-
-    public static function publishAllThemeResources($focreCopy = false)
-    {
-        $names = tm()->getThemeNames();
-        foreach ($names as $name) {
-            $theme = tm()->getTheme($name);
-            if ($theme !== null) {
-                if ($focreCopy)
-                    $theme->forcePublishResources();
-                else
-                    $theme->publishResources();
-            }
-        }
-    }
-    
     public static function themeScreens()
     {
         $data = array();
@@ -297,7 +282,7 @@ class CDBase
         foreach ($names as $name) {
             $theme = tm()->getTheme($name);
             if ($theme !== null) {
-                $data[$name] = $theme->getConfig('screen_shoot');
+                $data[$name] = $theme->baseUrl . '/screenshoot.png';
             }
         }
         return $data;

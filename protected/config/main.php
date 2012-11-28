@@ -89,12 +89,13 @@ return array(
             'directoryLevel' => 2,
         ),
         'assetManager' => array(
-            'basePath' => $params['resourceBasePath'] . 'assets',
-            'baseUrl' => $params['resourceBaseUrl'] . 'assets',
+            'basePath' => $params['assetsResourceBasePath'],
+            'baseUrl' => $params['assetsResourceBaseUrl'],
         ),
         'themeManager' => array(
             'themeClass' => 'application.extensions.CDTheme',
-            'basePath' => BETA_WEBROOT . DS . '..' . DS . 'themes' . DS,
+            'basePath' => $params['themeResourceBasePath'],
+            'baseUrl' => $params['themeResourceBaseUrl'],
         ),
         'session' => array(
             'autoStart' => true,

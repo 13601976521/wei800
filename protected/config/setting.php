@@ -2,6 +2,9 @@
 /**
  * 此文件为默认配置文件，请勿修改
  */
+$path = str_replace($_SERVER['DOCUMENT_ROOT'], '', $_SERVER['SCRIPT_FILENAME']);
+$path = dirname($path);
+$path = rtrim($path, '/') . '/';
 
 return array(
     // 站点名称
@@ -14,11 +17,17 @@ return array(
     // 缓存数据目录
     'dataPath' => BETA_CONFIG_ROOT . DS . '..' . DS . 'data' . DS,
     // 上传文件保存目录及基本url地址，url后面要带/
-    'uploadBasePath' => BETA_WEBROOT . DS . '..' . DS . 'uploads' . DS,
-    'uploadBaseUrl' => 'http://f.weixin800.cn/',
+    'uploadBasePath' => BETA_WEBROOT . DS . 'uploads' . DS,
+    'uploadBaseUrl' => $path . 'uploads/',
     // 静态资源文件保存目录及基本url地址，url后面要带/
-    'resourceBasePath' => BETA_WEBROOT . DS . '..' . DS . 'resources' . DS,
-    'resourceBaseUrl' => 'http://s.weixin800.cn/',
+    'resourceBasePath' => BETA_WEBROOT . DS . 'resources' . DS,
+    'resourceBaseUrl' => $path . 'resources/',
+    // theme静态资源文件保存目录及基本url地址，url后面要带/
+    'themeResourceBasePath' => BETA_WEBROOT . DS . 'themes' . DS,
+    'themeResourceBaseUrl' => $path . 'themes/',
+    // assets资源文件保存目录及基本url地址，url后面要带/
+    'assetsResourceBasePath' => BETA_WEBROOT . DS . 'assets' . DS,
+    'assetsResourceBaseUrl' => $path . 'assets/',
 
     /*
      * datetime format
