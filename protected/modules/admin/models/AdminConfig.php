@@ -39,7 +39,7 @@ class AdminConfig extends Config
         $rows = CHtml::listData($rows, 'config_name', 'config_value');
         $data = "<?php\nreturn " . var_export($rows, true) . ';';
         $filename = self::cacheFilename();
-        return ($filename === false) ? false : file_put_contents($filename, $data);
+        return file_put_contents($filename, $data);
     }
     
     public static function saveConfig($name, $value)

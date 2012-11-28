@@ -51,7 +51,7 @@ CDWeixin.sendFollowStats = function(data, wxid, msg){
 $(function(){
 	setTimeout(function(){CDWeixin.sendViewStats(wxdata);}, 1000);
 	
-	$('[data-action=wxfollow]').on('click', function(event){
+	$('[data-action=cd-follow]').on('click', function(event){
     	var originalWxid = this.getAttribute('data-wxid');
     	var wxid = this.getAttribute('data-id');
     	if (typeof originalWxid != 'undefined' && originalWxid.length > 0)
@@ -60,7 +60,7 @@ $(function(){
     	    });
 	});
 	
-	$('[data-action=wxshare]').on('click', function(event){
+	$('[data-action=cd-share]').on('click', function(event){
 	    CDWeixin.shareToWeixinFriend(wxdata, function(msg){
 	    	CDWeixin.sendShareFriendStats(wxdata, msg);
 	    });

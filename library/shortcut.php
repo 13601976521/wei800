@@ -155,14 +155,16 @@ function tbu($file = null, $useDefault = true, $themeName = null)
     $sbu = sbu($file);
     if ($themeName === null)
         $theme = app()->theme;
-    else
+    elseif (is_string($themeName))
         $theme = tm()->getTheme($themeName);
+    elseif ($themeName instanceof CDTheme)
+        $theme = $themeName;
 
     $url = '';
     if ($theme !== null) {
-        $filename = $theme->getAssetPath($file);
+        $filename = $theme->getBasePath() . DS . ltrim($file, DS);
         if (file_exists($filename))
-            $url = $theme->getAssetUrl($file);
+            $url = $theme->getBaseUrl() . '/' . ltrim($file, '/');
         else
             $url = $useDefault ? $sbu : '';
     }
@@ -184,12 +186,14 @@ function tbp($file = null, $useDefault = false, $themeName = null)
     $sbp = sbp($file);
     if ($themeName === null)
         $theme = app()->theme;
-    else
+    elseif (is_string($themeName))
         $theme = tm()->getTheme($themeName);
+    elseif ($themeName instanceof CDTheme)
+        $theme = $themeName;
     
     $filepath = null;
     if ($theme !== null) {
-        $filepath = $theme->getResourcePath() . DS . $file;
+        $filepath = $theme->getBasePath() . DS . ltrim($file, DS);
         if (!file_exists($filepath))
             $filepath = $useDefault ? $sbp : '';
     }
@@ -197,26 +201,6 @@ function tbp($file = null, $useDefault = false, $themeName = null)
         $filepath = $sbp;
 
     return $filepath;
-}
-
-/**
- * 获取publish之后的theme 资源文件路径
- * @param string $file
- * @param string $themeName
- * @return string 文件路径
- */
-function tsbp($file = null, $themeName = null)
-{
-    if ($themeName === null)
-        $theme = app()->theme;
-    else
-        $theme = tm()->getTheme($themeName);
-    
-    $filepath = '';
-    if ($theme !== null)
-        $filepath = $theme->getAssetPath($file);
-    
-    return (string) $filepath;
 }
 
 /**
@@ -341,29 +325,19 @@ function dp($path = null)
     return $path ?  $dp . $path : $dp;
 }
 
-
-/**
- * 将非DocumentRoot内的文件publish到assets内，并返回url
- * @param string $file 要获取路径的文件
- * @param string $path publish到assets内的文件目录
- * @param bool $hashByName
- * @param integer $level
- * @param bool $forceCopy
- * @return string assets内的文件url
- */
-function assets($file, $path, $hashByName = false, $level = -1, $forceCopy = null)
+function tcfg($name, $themeName = null)
 {
-    $file = ltrim($file, DS);
-    $assetsPath = am()->getPublishedPath($path, $hashByName);
-    if ($assetsPath === false)
-        $assetsUrl = am()->publish($path, $hashByName, $level, $forceCopy);
+    if ($themeName === null)
+        $theme = app()->theme;
+    elseif (is_string($themeName))
+        $theme = tm()->getTheme($themeName);
+    elseif ($themeName instanceof CDTheme)
+        $theme = $themeName;
+    
+    if ($theme)
+        return $theme->getConfig($name);
     else
-        $assetsUrl = am()->getPublishedUrl($path, $hashByName);
-    
-    $url = rtrim($assetsUrl) . '/' . $file;
-    
-    return $url;
+        return null;
 }
-
 
 

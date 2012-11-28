@@ -9,6 +9,7 @@
  * @property integer $user_id
  * @property string $title
  * @property string $content
+ * @property string $theme_name
  * @property integer $view_count
  * @property integer $back_count
  * @property integer $share_count
@@ -18,6 +19,7 @@
  * @property string $ad_accounts
  * @property integer $ad_line_count
  *
+ * @property CDTheme $theme
  * @property integer $visitCount
  * @property string $filterContent
  * @property string $createTime
@@ -62,6 +64,7 @@ class Post extends CActiveRecord
 	        array('weixin_id, user_id, title, content', 'required'),
 	        array('weixin_id, user_id, view_count, back_count, share_count, comment_count, create_time, ad_line_count', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>200),
+			array('theme_name', 'length', 'max'=>50),
 			array('create_ip', 'length', 'max'=>15),
 			array('content, ad_accounts', 'safe'),
 		);
@@ -149,6 +152,17 @@ class Post extends CActiveRecord
 	    return $url;
 	}
 
+	public function getTheme()
+	{
+	    if ($this->theme_name) {
+	        $theme = tm()->getTheme($this->theme_name);
+	        if ($theme !== null)
+	            return $theme;
+	    }
+	    
+	    return null;
+	}
+	
 	public function getWeixinUrl()
 	{
 	    return aurl('post/show', array('id'=>$this->id));

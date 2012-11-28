@@ -19,5 +19,4 @@ class WeixinController extends Controller
         ));
     }
     
-    
 }

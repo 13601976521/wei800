@@ -95,7 +95,7 @@ $(function(){
 	});
 	
     KindEditor.ready(function(K) {
-    	KEConfig.weixin.cssPath = ['<?php echo sbu('css/cd-weixin.css');?>'];
+    	KEConfig.weixin.cssPath = ['<?php echo tbu('css/cd-weixin.css', true, param('theme_name'));?>'];
     	KEConfig.weixin.uploadJson = '<?php echo aurl('upload/image');?>';
     	K.create('.post-content', KEConfig.weixin);
 

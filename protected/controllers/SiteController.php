@@ -36,27 +36,6 @@ class SiteController extends Controller
         $this->render('login', array('form'=>$model));
     }
     
-    public function actionSignup()
-    {
-        $this->redirect(CDBase::loginUrl());
-        
-        if (!user()->getIsGuest()) {
-            $this->redirect(CDBase::adminHomeUrl());
-            exit(0);
-        }
-        
-        $model = new LoginForm('signup');
-        if (request()->getIsPostRequest() && isset($_POST['LoginForm'])) {
-            $model->attributes = $_POST['LoginForm'];
-            $model->validate() && $model->signup();
-        }
-        
-        cs()->registerMetaTag('noindex, follow', 'robots');
-        $this->setSiteTitle('用户注册');
-        
-        $this->render('signup', array('form'=>$model));
-    }
-    
     public function actionLogout()
     {
         user()->logout();
@@ -71,9 +50,17 @@ class SiteController extends Controller
         $error = app()->errorHandler->error;
         if ($error) {
             $this->setPageTitle('Error ' . $error['code']);
-            $this->render('/system/error', $error);
+            if (CDBase::userIsMobileBrower())
+                $this->renderPartial('/system/error_mobile', $error);
+            else
+                $this->render('/system/error', $error);
         }
     }
 
+    public function actionTest()
+    {
+        $v = tcfg('theme_name');
+        var_dump($v);
+    }
 }
 

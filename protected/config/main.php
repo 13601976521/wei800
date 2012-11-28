@@ -8,7 +8,7 @@ try {
     $params = array_merge($defaultSetting, $params);
     $cachefile = $defaultSetting['dataPath'] . DS . 'setting.config.php';
     if (file_exists($cachefile) && is_readable($cachefile)) {
-        $customSetting = @require($cachefile);
+        $customSetting = require($cachefile);
         $params = array_merge($params, $customSetting);
     }
     
@@ -28,7 +28,7 @@ return array(
     'language' => 'zh_CN',
     'layout' => 'main',
     'timezone' => 'Asia/Shanghai',
-    'theme' => null,
+    'theme' => $params['theme_name'],
 
     'import' => array(
 		'application.models.*',
@@ -89,8 +89,8 @@ return array(
             'directoryLevel' => 2,
         ),
         'assetManager' => array(
-            'basePath' => $params['assetsResourceBasePath'],
-            'baseUrl' => $params['assetsResourceBaseUrl'],
+            'basePath' => $params['assetsBasePath'],
+            'baseUrl' => $params['assetsBaseUrl'],
         ),
         'themeManager' => array(
             'themeClass' => 'application.extensions.CDTheme',

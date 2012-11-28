@@ -11,11 +11,14 @@ class PostController extends Controller
     {
         $id = (int)$id;
         if ($id <= 0)
-            $this->forward('weixin/error');
+            throw new Exception('非法请求');
     
         $post = Post::model()->with('weixin', 'adweixin')->findByPk($id);
         if ($post === null)
-            $this->forward('weixin/error');
+            throw new Exception('请求的内容不存在');
+        
+        if ($post->theme !== null)
+            app()->setTheme($post->theme_name);
         
         $route = $back ? 'post/backstats' : 'post/viewstats';
         $viewStatsUrl = aurl($route, array('pid'=>$post->id));
@@ -33,10 +36,9 @@ class PostController extends Controller
         $datajs = sprintf('var wxdata = %s;', json_encode($shareData));
         cs()->registerScript('data_jscode', $datajs, CClientScript::POS_END);
         
-        self::outputStaticCode();
+        self::outputStaticCode($post->theme);
         
         $this->pageTitle = $post->title;
-        
         $this->render('show', array(
             'post' => $post,
             'weixin' => $post->weixin,
@@ -48,9 +50,13 @@ class PostController extends Controller
     
     public static function outputStaticCode($theme = null)
     {
-        $cssfile = tbp('css/cd-weixin.css', true, $theme);
+        $cssfile = sbp('css/cd-weixin.css');
         if (file_exists($cssfile) && is_readable($cssfile) && $css = file_get_contents($cssfile))
             cs()->registerCss('wxcss', $css);
+
+        $themeCssfile = tbp('css/weixin.css', true, $theme);
+        if (file_exists($themeCssfile) && is_readable($themeCssfile) && $themecss = file_get_contents($themeCssfile))
+            cs()->registerCss('themecss', $themecss);
         
         $zeptofile = sbp('libs/zepto.min.js');
         if (file_exists($zeptofile) && is_readable($zeptofile) && $zeptojs = file_get_contents($zeptofile))
@@ -60,18 +66,11 @@ class PostController extends Controller
         if (file_exists($wxfile) && is_readable($wxfile) && $wxjs = file_get_contents($wxfile))
             cs()->registerScript('wxjs', $wxjs, CClientScript::POS_END);
         
-        $themefile = tbp('js/cd-weixin.js', false, $theme);
-        if (file_exists($themefile) && is_readable($themefile) && $themejs = file_get_contents($themefile))
+        $themeJsfile = tbp('js/cweixin.js', false, $theme);
+        if (file_exists($themeJsfile) && is_readable($themeJsfile) && $themejs = file_get_contents($themeJsfile))
             cs()->registerScript('themejs', $themejs, CClientScript::POS_END);
     }
 
-    
-    public function actionError()
-    {
-        echo '出现错误';
-        exit(0);
-    }
-    
     public function actionViewstats($pid)
     {
         header('Content-Type: image/png');

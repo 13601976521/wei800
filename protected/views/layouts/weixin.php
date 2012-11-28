@@ -9,10 +9,10 @@
 <meta name="robots" content="all" />
 </head>
 <body>
-<div class="wx-wrapper">
+<div class="cd-wrapper">
 <?php echo $content;?>
 <footer>
-    <a href="http://www.weixin800.com/static/intro" target="_blank">本页面由&nbsp;<?php echo app()->name;?>&nbsp;运营平台生成</a>
+    <a href="http://www.weixin800.com/static/intro" target="_blank">本页面由&nbsp;微800&nbsp;运营平台生成</a>
 </footer>
 </div>
 </body>

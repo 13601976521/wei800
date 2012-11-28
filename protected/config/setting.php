@@ -23,11 +23,12 @@ return array(
     'resourceBasePath' => BETA_WEBROOT . DS . 'resources' . DS,
     'resourceBaseUrl' => $path . 'resources/',
     // theme静态资源文件保存目录及基本url地址，url后面要带/
+    'theme_name' => null,
     'themeResourceBasePath' => BETA_WEBROOT . DS . 'themes' . DS,
     'themeResourceBaseUrl' => $path . 'themes/',
     // assets资源文件保存目录及基本url地址，url后面要带/
-    'assetsResourceBasePath' => BETA_WEBROOT . DS . 'assets' . DS,
-    'assetsResourceBaseUrl' => $path . 'assets/',
+    'assetsBasePath' => BETA_WEBROOT . DS . 'assets' . DS,
+    'assetsBaseUrl' => $path . 'assets/',
 
     /*
      * datetime format

@@ -14,7 +14,6 @@ sub,sup{position:relative;font-size:75%;line-height:0;vertical-align:baseline;}
 sup{top:-0.5em;}
 sub{bottom:-0.25em;}
 img{max-width:100%;height:auto;vertical-align:middle;border:0;}
-#map_canvas img,.google-maps img{max-width:none;}
 button,input,select,textarea{margin:0;font-size:100%;vertical-align:middle;}
 button,input{*overflow:visible;line-height:normal;}
 button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer;}
@@ -54,53 +53,3 @@ input[type="submit"].btn-block,input[type="reset"].btn-block,input[type="button"
 body {margin:0; padding:0; line-height:20px; font-size:14px; color:#333333; font-family:"Hiragino Sans GB",Helvetica,Arial,Sans-serif;}
 a {color:#1F3B7B; text-decoration:none;}
 a:hover {color:#D14836; text-decoration:none;}
-
-header {background:black url(../images/header_bg.jpg) no-repeat; overflow:hidden; margin-bottom:10px;}
-header a {width:250px; height:60px; text-indent:-9999px; display:block;}
-footer {font-size:12px; margin:10px 0 0; background-color:#333; color:#666666; padding:7px;}
-footer a {display:block; color:#CCC; text-align:center;}
-
-.wx-wrapper {background:#F2F2F2; margin:0; padding:0;}
-.wx-container {margin:0 10px; line-height:24px;}
-.wx-container .title {font-size:20px; margin:5px 0 20px; line-height:20px;}
-.wx-container .line1px {height:1px; line-height:1px; font-size:0; background-color:#DFDFDF; margin:15px 0 10px;}
-.box-shadow {-webkit-box-shadow:0px 0px 8px rgba(0, 0, 0, 0.2); box-shadow:0px 0px 8px rgba(0, 0, 0, 0.2);}
-
-/* post/show */
-.wx-header {background:white; padding:10px 5px;}
-.cd-content-box {margin:15px 0; padding:10px; background:white; overflow-x:hidden; border:solid 1px #D1D1D1; border-radius:8px; -webkit-border-radius:8px;}
-.cd-post-content {font-size:16px; line-height:24px;}
-.cd-post-content img {margin-left:auto; margin-right:auto;}
-.cd-post-content p {line-height:24px; margin:5px 0 10px;}
-.cd-post-content blockquote {padding: 10px; background:#EFEFEF; color:#555; font-size:14px; margin:15px 10px; border-radius:3px;}
-.cd-post-content blockquote p {font-size:14px;}
-.cd-post-content ul {margin:1px 0 15px 30px;}
-.cd-post-content li {margin-bottom:5px; line-height:22px;}
-.cd-post-content table {border-spacing:0; border-collapse:collapse; border:0; margin:10px 0;}
-.cd-post-content table th, .cd-post-content table td {border:1px solid #CFCFCF; padding:5px;}
-
-.button-row {margin:15px auto 0; width:60%;}
-
-/* more weixin */
-.more-weixin {margin:15px 0 0; background:white; padding:10px;}
-.avatar {display:inline-block; width:46px; margin:0; padding:3px; overflow:hidden; border-radius:26px; -webkit-border-radius:26px; border:1px solid #DFDFDF; box-shadow:1px 1px 1px #DFDFDF;}
-.avatar:active, .more-weixin li img:active {opacity:.5;}
-.avatar img {width:100%; border-radius:23px; -webkit-border-radius:23px;}
-.more-weixin .more-title {font-size:16px; font-weight:normal; border-bottom:1px dashed #DFDFDF; margin-bottom:10px;;}
-.more-weixin .more-title span {font-size:12px; color:#9F9F9F; margin-left:5px;}
-.more-weixin dl {border-bottom:1px dashed #DFDFDF; padding:0; margin:10px 0 0; cursor:pointer; position:relative; height:64px;}
-.more-weixin .wxname {position:absolute; top:0; left:70px; font-size:14px; font-weight:bold;}
-.more-weixin dd {position:absolute; top:25px; left:70px; color:#9F9F9F; line-height:14px; font-size:12px; margin:0;}
-.more-weixin .avatar {position:absolute; top:0; left:0;}
-
-.more-weixin li .avatar {position:static;}
-.more-weixin ul {list-style:none; margin:15px 0 0; padding:0;}
-.more-weixin li {display:block; float:left; text-align:center; width:25%; margin:0 0 7px; cursor:pointer;}
-.more-weixin li h4 {font-weight:normal; font-size:12px; line-height:18px; color:#555555; margin:0 5px; white-space:nowrap; overflow:hidden;}
-
-.btn-focus {display:block; background:url(http://t2.qpic.cn/mblogpic/426c637092f06ffde172/2000) no-repeat center center; background-size:100% 100%; position:relative; height:64px; padding:0 15px;}
-.btn-focus .avatar {top:5px; left:10px; position:absolute;}
-.btn-focus .wxname {top:10px; left:75px; position:absolute; margin:0; font-size:14px; font-weight:bold; color:#555;}
-.btn-focus .wxid {top:35px; left:75px; position:absolute; margin:0; font-size:12px; color:gray;}
-.btn-focus b {top:20px; right:10px; position:absolute; font-size:14px; color:#DFDFDF;}
-

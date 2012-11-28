@@ -4,6 +4,12 @@
     <?php echo user()->getFlash('flush_theme_cache_success');?>
 </div>
 <?php endif;?>
+<?php if (user()->hasFlash('flush_theme_cache_fail')):?>
+<div class="alert alert-error fade in">
+    <button type="button" data-dismiss="alert" class="close">&times;</button>
+    <?php echo user()->getFlash('flush_theme_cache_fail');?>
+</div>
+<?php endif;?>
 
 <?php echo CHtml::form('', 'post');?>
 <div class="alert alert-block">

@@ -93,8 +93,12 @@ class ConfigController extends AdminController
     public function actionFlush()
     {
         if (request()->getIsPostRequest()) {
-            CDBase::publishAllThemeResources(true);
-            user()->setFlash('flush_theme_cache_success', '系统缓存更新完毕');
+            $result = AdminConfig::flushAllConfig();
+            if ($result === false) {
+                user()->setFlash('flush_theme_cache_fail', '更新系统配置文件出错');
+            }
+            else
+                user()->setFlash('flush_theme_cache_success', '系统缓存更新完毕');
             $this->redirect(request()->getUrl());
         }
         
