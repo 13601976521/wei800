@@ -3,7 +3,8 @@ class UploadController extends Controller
 {
     public function actionImage()
     {
-        if (request()->getIsPostRequest() && user()->checkAccess('upload_file')) {
+        
+        if (!user()->getIsGuest() && request()->getIsPostRequest()) {
             $upload = CUploadedFile::getInstanceByName('imgFile');
             if ($upload->hasError) {
                 $data = array(
