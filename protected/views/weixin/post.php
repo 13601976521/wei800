@@ -4,7 +4,7 @@
         <a data-action="cd-follow" class="btn-focus" href="javascript:void(0);" data-wxid="<?php echo $weixin->original_wxid;?>" data-id="<?php echo $post->id;?>">
             <div class="cd-avatar"><?php echo $weixin->circleAvatarImage;?></div>
             <div class="cd-wxname"><?php echo $weixin->wxname;?></div>
-            <div class="cd-wxid">微信号：<?php echo $weixin->original_wxid;?></div>
+            <div class="cd-wxid">微信号：<?php echo $weixin->custom_wxid;?></div>
             <b>&gt;</b>
         </a>
      </div>
