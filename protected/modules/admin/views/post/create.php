@@ -18,7 +18,7 @@
     <div class="control-group <?php if($model->hasErrors('theme_name')) echo 'error';?>">
         <?php echo CHtml::activeLabel($model, 'theme_name', array('class'=>'control-label'));?>
         <div class="controls">
-            <?php echo CHtml::activeDropDownList($model, 'theme_name', $themes, array('prompt'=>'请选择模板', 'id'=>'cd-themes'));?>
+            <?php echo CHtml::activeDropDownList($model, 'theme_name', $themes, array('prompt'=>'使用默认模板', 'id'=>'cd-themes'));?>
             <?php if($model->hasErrors('theme_name')):?>
                 <span class="help-inline"><?php echo $model->getError('theme_name');?></span>
             <?php else:?>
