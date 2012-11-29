@@ -3,8 +3,8 @@
 <?php if (!$validRequest || !$dbSeverStatus || !$createTableResult):?>
 <div class="alert alert-block alert-error">
     <?php if (!$validRequest):?>非法请求
-    <?php elseif (!$dbSeverStatus):?>数据库连接信息不正确，请返回重新填写。
-    <?php else:?> 创建表结构出错。
+    <?php elseif (!$dbSeverStatus):?>数据库连接信息不正确，请返回重新填写。<br /><br /><?php echo $dberror;?>
+    <?php else:?> 创建表结构出错。<br /><br /><?php echo $dberror;?>
     <?php endif;?>
 </div>
 <div class="buttons">

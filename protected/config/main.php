@@ -18,7 +18,14 @@ catch (Exception $e) {
     exit(0);
 }
 
-$dbconfig = require($params['dataPath'] . DS . 'db.config.php');
+$dbfile = $params['dataPath'] . 'db.config.php';
+if (file_exists($dbfile) && is_readable($dbfile))
+    $dbconfig = @require($dbfile);
+else {
+    echo 'db.config.php数据库配置文件不存在，请先安装程序或检查文件是否存在。';
+    exit(0);
+}
+
 
 return array(
     'id' => $_SERVER['HTTP_HOST'],
@@ -68,7 +75,7 @@ return array(
         ),
         'db' => array(
             'class' => 'CDbConnection',
-			'connectionString' => sprintf('mysql:host=%s; port=%s; dbname=%s', $dbconfig['dbHost'], $dbconfig['dbPort'], $dbconfig['dbName']),
+			'connectionString' => sprintf('mysql:host=%s; dbname=%s', $dbconfig['dbHost'], $dbconfig['dbName']),
 			'username' => $dbconfig['dbUser'],
 		    'password' => $dbconfig['dbPassword'],
 		    'charset' => 'utf8',

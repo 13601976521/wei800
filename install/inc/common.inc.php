@@ -42,38 +42,44 @@ function renderFile($_file, $_params=array())
 
 function checkRuntimeAccess()
 {
-    $path = PATH_ROOT . DS . '..' . DS . '..' . DS . 'protected' . DS . 'runtime';
+    $path = PATH_ROOT . DS . '..' . DS . 'protected' . DS . 'runtime';
     return file_exists($path) && is_writable($path);
 }
 
 function checkDataAccess()
 {
-    $path = PATH_ROOT . DS . '..' . DS . '..' . DS . 'protected' . DS . 'data';
+    $path = PATH_ROOT . DS . '..' . DS . 'protected' . DS . 'data';
     return file_exists($path) && is_writable($path);
+}
+
+function checkDbConfigAccess()
+{
+    $path = PATH_ROOT . DS . '..' . DS . 'protected' . DS . 'data' . DS . 'db.config.php';
+    return !file_exists($path) || is_writable($path);
 }
 
 function checkUploadAccess()
 {
-    $path = PATH_ROOT . DS . '..' . DS . '..' . DS . 'uploads';
+    $path = PATH_ROOT . DS . '..' . DS . 'uploads';
     return file_exists($path) && is_writable($path);
 }
 
 function checkAssetsAccess()
 {
-    $path = PATH_ROOT . DS . '..' . DS . '..' . DS . 'resources' . DS . 'assets';
+    $path = PATH_ROOT . DS . '..' . DS . 'resources' . DS . 'assets';
     return file_exists($path) && is_writable($path);
 }
 
 function createInstallLockFile()
 {
-    $filename = PATH_ROOT . DS . '..' . DS . '..' . DS . 'protected' . DS . 'data' . DS . 'install.lock';
+    $filename = PATH_ROOT . DS . '..' . DS . 'protected' . DS . 'data' . DS . 'install.lock';
     $result = file_put_contents($filename, '1');
     return $result;
 }
 
 function installLockFileExist()
 {
-    $filename = PATH_ROOT . DS . '..' . DS . '..' . DS . 'protected' . DS . 'data' . DS . 'install.lock';
+    $filename = PATH_ROOT . DS . '..' . DS . 'protected' . DS . 'data' . DS . 'install.lock';
     return file_exists($filename);
 }
 
@@ -81,16 +87,36 @@ function fetchsql()
 {
     $filename = dirname(__FILE__) . DS . 'wei800.sql';
     if (file_exists($filename) && is_readable($filename)) {
-        $sql = file_get_contents($filename);
-        if ($sql ===  false) {
+        $sqls = file($filename, FILE_IGNORE_NEW_LINES);
+        if ($sqls ===  false) {
             echo "读取sql文件{$filename}失败。";
             exit(0);
         }
-        else
-            return $sql;
+        else {
+            $sqls = array_map('trim', $sqls);
+            $sqls = array_filter($sqls);
+            return $sqls;
+        }
     }
     else {
         echo $filename . '不存在或不可读';
         exit(0);
     }
 }
+
+function saveDbConfig($config)
+{
+    $cfg = array(
+        'dbHost' => $config['host'],
+        'dbName' => $config['name'],
+        'dbUser' => $config['user'],
+        'dbPassword' => $config['passwd'],
+        'tablePrefix' => 'cd_',
+    );
+    $data = "<?php\nreturn " . var_export($cfg, true) . ';';
+    $filename = PATH_ROOT . DS . '..' . DS . 'protected' . DS . 'data' . DS . 'db.config.php';
+    $result = file_put_contents($filename, $data);
+    return $result;
+}
+
+

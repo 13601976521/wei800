@@ -30,6 +30,7 @@ switch ($step)
         break;
     case 3:
         require PATH_ROOT . 'inc' . DS . 'step3.php';
+        $data['dberror'] = $dberror;
         $data['dbSeverStatus'] = $dbSeverStatus;
         $data['createTableResult'] = $createTableResult;
         $data['validRequest'] = $validRequest;

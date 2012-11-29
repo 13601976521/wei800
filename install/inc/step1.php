@@ -95,28 +95,34 @@ $requirements=array(
             '自动下载安装模板包时解压模板包会用到此模块'
     ),
     array(
-            'runtime 临时目录权限',
+            'protected/runtime<br />临时目录权限',
             true,
             checkRuntimeAccess(),
             'protected/runtime必须为php脚本执行用户可写目录，建议设置为777权限'
     ),
     array(
-            'data 数据缓存目录权限',
+            'protected/data<br/>数据缓存目录权限',
             true,
             checkDataAccess(),
             'protected/data必须为php脚本执行用户可写目录，建议设置为777权限'
     ),
     array(
-            'uplods 附件存放目录权限',
+            'protected/data/db.config.php<br/>数据库配置文件权限',
             true,
-            checkUploadAccess(),
-            '附件上传保存目录必须为php脚本执行用户可写目录，建议设置为777权限'
+            checkDbConfigAccess(),
+            'db.config.php不存在将会创建新文件，如果已经存在必须设置为php脚本执行用户可写目录，建议设置为777权限'
     ),
     array(
-            '静态资源发布目录权限',
+            'uploads<br />附件存放目录权限',
+            true,
+            checkUploadAccess(),
+            'uploads 附件上传保存目录必须为php脚本执行用户可写目录，建议设置为777权限'
+    ),
+    array(
+            'assets<br />静态资源发布目录权限',
             true,
             checkAssetsAccess(),
-            '静态资源发布必须为php脚本执行用户可写目录，建议设置为777权限'
+            'assets 静态资源发布必须为php脚本执行用户可写目录，建议设置为777权限'
     ),
 );
 

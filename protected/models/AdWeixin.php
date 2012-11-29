@@ -58,6 +58,7 @@ class AdWeixin extends CActiveRecord
 	        array('user_id, original_wxid, custom_wxid, wxname', 'required'),
 			array('user_id, create_time, state', 'numerical', 'integerOnly'=>true),
 			array('original_wxid, contact, phone, qq', 'length', 'max'=>20),
+			array('original_wxid', 'match', 'pattern'=>'/gh_\w+/i', 'message'=>'格式不正确，原始号以gh_开头'),
 			array('custom_wxid, wxname', 'length', 'max'=>50),
 			array('avatar, email, site', 'length', 'max'=>250),
 			array('create_ip', 'length', 'max'=>15),
