@@ -3,7 +3,7 @@
  * 此文件为默认配置文件，请勿修改
  */
 $path = str_replace($_SERVER['DOCUMENT_ROOT'], '', $_SERVER['SCRIPT_FILENAME']);
-$path = '/' . ltrim(dirname($path), '/');
+$path = 'http://' . $_SERVER['HTTP_HOST'] . '/' . ltrim(dirname($path), '/');
 
 return array(
     // 站点名称

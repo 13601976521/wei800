@@ -26,6 +26,7 @@
  * @property integer $state
  *
  * @property string $createTime
+ * @property string $avatarUrl
  * @property string $rectAvatarUrl
  * @property string $circleAvatarUrl
  * @property string $qrcodeUrl
@@ -141,6 +142,15 @@ class Weixin extends CActiveRecord
 	        $url = '';
 	    elseif (!CDBase::isHttpUrl($url))
 	        $url = fbu($url);
+	    
+	    return $url;
+	}
+	
+	public function getAvatarUrl()
+	{
+	    $url = $this->getCircleAvatarUrl();
+	    if (empty($url))
+	        $url = $this->getRectAvatarUrl();
 	    
 	    return $url;
 	}

@@ -36,7 +36,7 @@ class WeixinController extends Controller
         $shareData = array(
             'image_url' => $post->weixinShareImgUrl,
             'title' => h($post->title),
-            'desc' => h($post->title),
+            'desc' => h($post->getSummary(100)),
             'link' => $post->backUrl,
             'viewStatsUrl' => $viewStatsUrl,
             'shareUrl' => aurl('weixin/sharestats', array('pid'=>$post->id)),

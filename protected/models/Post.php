@@ -148,7 +148,7 @@ class Post extends CActiveRecord
 	{
 	    $url = $this->getFirstImageUrl();
 	    if (empty($url))
-	        $url = $this->weixin->rectAvatarUrl;
+	        $url = $this->weixin->getAvatarUrl();
 
 	    return $url;
 	}

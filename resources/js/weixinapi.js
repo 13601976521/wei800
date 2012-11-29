@@ -61,7 +61,7 @@ $(function(){
 	});
 	
 	$('[data-action=cd-share]').on('click', function(event){
-	    CDWeixin.shareToWeixinFriend(wxdata, function(msg){alert(msg);
+	    CDWeixin.shareToWeixinFriend(wxdata, function(msg){
 	    	CDWeixin.sendShareFriendStats(wxdata, msg);
 	    });
 	});
