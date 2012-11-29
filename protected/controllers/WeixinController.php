@@ -34,7 +34,7 @@ class WeixinController extends Controller
         $route = $back ? 'weixin/backstats' : 'weixin/viewstats';
         $viewStatsUrl = aurl($route, array('pid'=>$post->id));
         $shareData = array(
-            'image_url' => $post->weixinShareImgUrl,
+            'img_url' => $post->weixinShareImgUrl,
             'title' => h($post->title),
             'desc' => h($post->getSummary(100)),
             'link' => $post->backUrl,
