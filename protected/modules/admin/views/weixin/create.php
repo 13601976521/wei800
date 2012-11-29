@@ -58,63 +58,64 @@
             <?php echo CHtml::activeFileField($model, 'qrcode');?>
             <?php if($model->hasErrors('qrcode')):?><span class="help-inline"><?php echo $model->getError('qrcode');?></span><?php endif;?>
             <?php echo $model->qrcodeImage;?>
-            <p class="alert alert-warning">头像、二维码图片请确保图片大小不超过1M，图片宽度和高度都不超过1024px，推荐使用公众平台上现有的图片。</p>
+            <p class="alert alert-warning">头像、二维码图片请确保图片大小不超过256K，图片宽度和高度都不超过1024px，推荐使用公众平台上现有的图片。</p>
         </div>
     </div>
     <div class="form-actions">
+        <input type="button" value="更多设置" class="btn btn-info" id="more-items" />
         <a class="btn" href="<?php echo $model->listUrl;?>">返回列表</a>
-        <input type="submit" value="提交" class="btn btn-primary" />
+        <input type="submit" value="提交保存" class="btn btn-primary" />
     </div>
-    <div class="control-group <?php if($model->hasErrors('fans_count')) echo 'error';?>">
+    <div class="control-group hide <?php if($model->hasErrors('fans_count')) echo 'error';?>">
         <?php echo CHtml::activeLabel($model, 'fans_count', array('class'=>'control-label'));?>
         <div class="controls">
             <?php echo CHtml::activeTextField($model, 'fans_count', array('class'=>'input-small', 'placeholder'=>'微信公众号粉丝数量'));?>
             <?php if($model->hasErrors('fans_count')):?><span class="help-inline"><?php echo $model->getError('fans_count');?></span><?php endif;?>
         </div>
     </div>
-    <div class="control-group <?php if($model->hasErrors('tags')) echo 'error';?>">
+    <div class="control-group hide <?php if($model->hasErrors('tags')) echo 'error';?>">
         <?php echo CHtml::activeLabel($model, 'tags', array('class'=>'control-label'));?>
         <div class="controls">
             <?php echo CHtml::activeTextField($model, 'tags', array('class'=>'input-xlarge', 'placeholder'=>'以逗号,分隔 最多5个'));?>
             <?php if($model->hasErrors('tags')):?><span class="help-inline"><?php echo $model->getError('tags');?></span><?php endif;?>
         </div>
     </div>
-    <div class="control-group <?php if($model->hasErrors('contact')) echo 'error';?>">
+    <div class="control-group hide <?php if($model->hasErrors('contact')) echo 'error';?>">
         <?php echo CHtml::activeLabel($model, 'contact', array('class'=>'control-label'));?>
         <div class="controls">
             <?php echo CHtml::activeTextField($model, 'contact', array('class'=>'input-large', 'placeholder'=>'您的姓名'));?>
             <?php if($model->hasErrors('contact')):?><span class="help-inline"><?php echo $model->getError('contact');?></span><?php endif;?>
         </div>
     </div>
-    <div class="control-group <?php if($model->hasErrors('phone')) echo 'error';?>">
+    <div class="control-group hide <?php if($model->hasErrors('phone')) echo 'error';?>">
         <?php echo CHtml::activeLabel($model, 'phone', array('class'=>'control-label'));?>
         <div class="controls">
             <?php echo CHtml::activeTextField($model, 'phone', array('class'=>'input-large', 'placeholder'=>'您的手机或固定电话'));?>
             <?php if($model->hasErrors('phone')):?><span class="help-inline"><?php echo $model->getError('phone');?></span><?php endif;?>
         </div>
     </div>
-    <div class="control-group <?php if($model->hasErrors('qq')) echo 'error';?>">
+    <div class="control-group hide <?php if($model->hasErrors('qq')) echo 'error';?>">
         <?php echo CHtml::activeLabel($model, 'qq', array('class'=>'control-label'));?>
         <div class="controls">
             <?php echo CHtml::activeTextField($model, 'qq', array('class'=>'input-large', 'placeholder'=>'您的QQ号'));?>
             <?php if($model->hasErrors('qq')):?><span class="help-inline"><?php echo $model->getError('qq');?></span><?php endif;?>
         </div>
     </div>
-    <div class="control-group <?php if($model->hasErrors('email')) echo 'error';?>">
+    <div class="control-group hide <?php if($model->hasErrors('email')) echo 'error';?>">
         <?php echo CHtml::activeLabel($model, 'email', array('class'=>'control-label'));?>
         <div class="controls">
             <?php echo CHtml::activeTextField($model, 'email', array('class'=>'input-xlarge', 'placeholder'=>'您的电子邮箱'));?>
             <?php if($model->hasErrors('email')):?><span class="help-inline"><?php echo $model->getError('email');?></span><?php endif;?>
         </div>
     </div>
-    <div class="control-group <?php if($model->hasErrors('site')) echo 'error';?>">
+    <div class="control-group hide <?php if($model->hasErrors('site')) echo 'error';?>">
         <?php echo CHtml::activeLabel($model, 'site', array('class'=>'control-label'));?>
         <div class="controls">
             <?php echo CHtml::activeTextField($model, 'site', array('class'=>'input-xlarge', 'placeholder'=>'您的网站或博客地址'));?>
             <?php if($model->hasErrors('site')):?><span class="help-inline"><?php echo $model->getError('site');?></span><?php endif;?>
         </div>
     </div>
-    <div class="form-actions">
+    <div class="form-actions hide">
         <a class="btn" href="<?php echo $model->listUrl;?>">返回列表</a>
         <input type="submit" value="提交" class="btn btn-primary" />
     </div>
@@ -128,28 +129,11 @@ cs()->registerCssFile(sbu('libs/chosen/chosen.css'));
 
 <script type="text/javascript">
 $(function(){
-	var categories = <?php echo $categoriesJsonData;?>;
 	$('#wxname').focus();
-	$('#parent_categories').chosen({
-    	'no_results_text': '没有找到匹配的分类'
-	}).change(function(){
-		var pid = parseInt($(this).val());
-		var subs = categories[pid] || [];
-		console.log(subs);
-		var subSelect = document.getElementById('sub_categories');
-		subSelect.options.length = 1;
-		for (var i=0; i<subs.length; i++) {
-			var sub = subs[i];
-			var option = document.createElement('option');
-			option.text = sub.name;
-			option.value = sub.id;
-			subSelect.add(option);
-		}
-		$('#sub_categories').trigger("liszt:updated");
-	});
-	
-	$('#sub_categories').chosen({
-		'no_results_text': '没有找到匹配的分类'
+
+	$(document).on('click', '#more-items', function(event){
+		var formActions = $(this).parents('.form-actions');
+		formActions.nextAll('div').toggle();
 	});
 });
 </script>

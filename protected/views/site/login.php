@@ -3,7 +3,6 @@
     <fieldset>
         <legend>欢迎登录 <?php echo app()->name;?></legend>
         <?php echo CHtml::activeHiddenField($form, 'returnUrl');?>
-        <div class="alert alert-info">测试账号：admin@24beta.com，密码：123123，请勿修改密码！</div>
         <div class="control-group <?php if ($form->getError('email')) echo 'error';?>">
             <?php echo CHtml::activeLabel($form, 'email', array('class'=>'control-label'));?>
             <div class="controls">
