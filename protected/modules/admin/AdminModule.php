@@ -7,7 +7,7 @@ class AdminModule extends CWebModule
 	public function init()
 	{
 	    if (user()->getIsGuest()) {
-	        $url = url('site/login', array('url'=>abu(request()->getUrl())));
+	        $url = url('site/login', array('url'=>request()->getUrl()));
 	        request()->redirect($url);
 	        exit(0);
 	    }

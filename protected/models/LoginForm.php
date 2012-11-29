@@ -147,7 +147,7 @@ class LoginForm extends CFormModel
         if (empty($returnUrl))
             $returnUrl = strip_tags(trim($_GET['url']));
         if (empty($returnUrl))
-                $returnUrl = aurl('user/default');
+                $returnUrl = CDBase::adminHomeUrl();
         
         request()->redirect($returnUrl);
         exit(0);
