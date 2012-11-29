@@ -19,4 +19,4 @@ button,input{*overflow:visible;line-height:normal;}
 button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer;}
 textarea{overflow:auto;vertical-align:top;}
 
-
+.cd-ke-content {margin:10px;}

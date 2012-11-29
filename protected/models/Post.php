@@ -155,13 +155,14 @@ class Post extends CActiveRecord
 
 	public function getTheme()
 	{
+	    $theme = null;
 	    if ($this->theme_name) {
 	        $theme = tm()->getTheme($this->theme_name);
-	        if ($theme !== null)
-	            return $theme;
+	        if ($theme === null)
+	            $theme = app()->theme;
+            
 	    }
-	    
-	    return null;
+	    return $theme;
 	}
 	
 	public function getWeixinUrl()

@@ -45,7 +45,7 @@ footer a {display:block; color:#CCC; text-align:center;}
 
 /* post/show */
 .cd-header {background:white; padding:10px 5px;}
-.cd-content-box {margin:15px 0; padding:10px; background:white; overflow-x:hidden; border:solid 1px #D1D1D1; border-radius:8px; -webkit-border-radius:8px;}
+.cd-content-box {margin:15px 0; padding:15px; background:white; overflow-x:hidden; border:solid 1px #D1D1D1; border-radius:8px; -webkit-border-radius:8px;}
 .cd-post-content {font-size:16px; line-height:24px;}
 .cd-post-content img {margin-left:auto; margin-right:auto;}
 .cd-post-content p {line-height:24px; margin:5px 0 10px;}
