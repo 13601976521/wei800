@@ -66,7 +66,7 @@ function checkUploadAccess()
 
 function checkAssetsAccess()
 {
-    $path = PATH_ROOT . DS . '..' . DS . 'resources' . DS . 'assets';
+    $path = PATH_ROOT . DS . '..' . DS . 'assets';
     return file_exists($path) && is_writable($path);
 }
 
