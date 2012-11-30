@@ -22,6 +22,7 @@ $dbfile = $params['dataPath'] . 'db.config.php';
 if (file_exists($dbfile) && is_readable($dbfile))
     $dbconfig = @require($dbfile);
 else {
+    header('Content-Type: text/plain; charset=utf-8');
     echo 'db.config.php数据库配置文件不存在，请先安装程序或检查文件是否存在。';
     exit(0);
 }

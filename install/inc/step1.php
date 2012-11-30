@@ -37,7 +37,7 @@ $requirements=array(
             '抓取远程文件时会用到此扩展'),
     array(
             'PDO扩展模块',
-            false,
+            true,
             extension_loaded('pdo'),
             '要使用数据库，此模块是必须'),
     /*array(
@@ -46,8 +46,13 @@ $requirements=array(
             extension_loaded('pdo_sqlite'),
             '如果使用SQLite数据库，这是必须的。'),*/
     array(
+            'MySQL扩展模块',
+            true,
+            extension_loaded('mysql'),
+            '如果使用MySQL数据库，这是必须的。'),
+    array(
             'PDO MySQL扩展模块',
-            false,
+            true,
             extension_loaded('pdo_mysql'),
             '如果使用MySQL数据库，这是必须的。'),
     /*array(
