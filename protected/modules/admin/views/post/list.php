@@ -76,7 +76,7 @@ $(function(){
         var pageUrl = tthis.attr('data-url');
         qrcodeModal.find('p.page-url').text(pageUrl);
         qrcodeModal.find('a.page-url').attr('href', pageUrl).show();
-        var qrcodeUrl = 'http://chart.apis.google.com/chart?chs=150x150&cht=qr&chld=L|0&chl=' + pageUrl;
+        var qrcodeUrl = 'http://chart.apis.google.com/chart?chs=150x150&cht=qr&chld=L|0&chl=' + encodeURIComponent(pageUrl);
         qrcodeModal.find('.preview-qrcode').attr('src', qrcodeUrl);
         qrcodeModal.modal('show');
     });

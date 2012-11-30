@@ -3,7 +3,8 @@
  * 此文件为默认配置文件，请勿修改
  */
 $path = str_replace($_SERVER['DOCUMENT_ROOT'], '', $_SERVER['SCRIPT_FILENAME']);
-$path = trim(dirname($path), '/');
+$path = trim(dirname($path), DS);
+$path = str_replace(DS, '/', $path);
 $path = 'http://' . $_SERVER['HTTP_HOST'] . '/' . ($path ? $path . '/' : '');
 
 return array(
