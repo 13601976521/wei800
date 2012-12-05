@@ -1,14 +1,23 @@
 <?php
 class SiteController extends Controller
 {
-    public function actionIndex()
+    public function actionIndex($wxid = '')
     {
-//         $this->render('index');
-        $this->redirect(CDBase::loginUrl());
+        $wxid = (int)$wxid;
+        if ($wxid > 0) {
+            $criteria = new CDbCriteria();
+            $criteria->addColumnCondition(array('weixin_id' => $wxid));
+        }
+        
+        $data = Post::fetchModels($criteria);
+        
+        $this->render('index', $data);
     }
 
     public function actionLogin($url = '')
     {
+        $this->layout = 'main';
+        
         if (!user()->getIsGuest()) {
             $returnUrl = strip_tags(trim($url));
             if (empty($returnUrl)) $returnUrl = CDBase::adminHomeUrl();
@@ -57,10 +66,24 @@ class SiteController extends Controller
         }
     }
 
-    public function actionTest()
+    public function actionGh($id)
     {
-        $v = tcfg('theme_name');
-        var_dump($v);
+        $this->layout = 'main';
+    
+        $id = (int)$id;
+        if ($id <= 0)
+            throw new CHttpException(503, '非法请求');
+    
+        $weixin = Weixin::model()->findByPk($id);
+        if ($weixin === null)
+            throw new CHttpException(403, '此微信号不存在');
+    
+        $this->setPageKeyWords(array($weixin->wxname, app()->name, '微信运营平台', '微信互推'));
+        $this->setSiteTitle($weixin->wxname);
+        $this->setPageDescription($weixin->desc);
+        $this->render('account', array(
+                'weixin' => $weixin,
+        ));
     }
 }
 

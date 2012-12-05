@@ -69,6 +69,7 @@ class AdminWeixin extends Weixin
         
         return ($requirePages || $requireSort) ? $data : $models;
     }
+
 }
 
 

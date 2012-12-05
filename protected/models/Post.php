@@ -19,6 +19,7 @@
  * @property string $ad_accounts
  * @property integer $ad_line_count
  *
+ * @property string $url
  * @property CDTheme $theme
  * @property integer $visitCount
  * @property string $filterContent
@@ -153,6 +154,11 @@ class Post extends CActiveRecord
 	    return $url;
 	}
 
+	public function getUrl()
+	{
+	    return aurl('weixin/post', array('id' => $this->id));
+	}
+	
 	public function getTheme()
 	{
 	    $theme = null;
@@ -272,6 +278,27 @@ class Post extends CActiveRecord
 	    
 	    return $ids;
 	}
+
+	public static function fetchModels($criteria = null, $requirePages = true)
+	{
+	    if ($criteria === null)
+    	    $criteria = new CDbCriteria();
+	
+	    if ($requirePages) {
+	        $pages = new CPagination(self::model()->count($criteria));
+	        $pages->setPageSize(param('post_list_page_size'));
+	        $pages->applyLimit($criteria);
+	    }
+	
+	    $models = self::model()->findAll($criteria);
+	
+	    $data = array(
+            'models' => $models,
+            'pages' => $pages,
+	    );
+	
+	    return$data;
+	}
 	
 	protected function beforeSave()
 	{
@@ -315,6 +342,7 @@ class Post extends CActiveRecord
             ->delete(TABLE_POST_WEIXIN, 'post_id = :pid', array(':pid'=>$this->id));
             
     }
+
 }
 
 

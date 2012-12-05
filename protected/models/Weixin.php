@@ -103,6 +103,7 @@ class Weixin extends CActiveRecord
 			'qrcode' => '二维码',
 			'fans_count' => '订阅人数',
 			'contact' => '联系人',
+	        'post_count' => '文章数量',
 			'phone' => '联系电话',
 			'qq' => '联系QQ',
 			'email' => '电子邮箱',
@@ -229,7 +230,7 @@ class Weixin extends CActiveRecord
 	
 	public function getHomeUrl()
 	{
-	    return aurl('weixin/gh', array('id'=>$this->id));
+	    return aurl('site/gh', array('id'=>$this->id));
 	}
 	
 	protected function beforeSave()
@@ -241,10 +242,6 @@ class Weixin extends CActiveRecord
 	    $this->desc = strip_tags(trim($this->desc));
 	    
 	    return true;
-	}
-	
-	protected function afterSave()
-	{
 	}
 	
 	public function upload()

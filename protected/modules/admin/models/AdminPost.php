@@ -98,6 +98,16 @@ class AdminPost extends Post
         else
             return $data;
     }
+
+    protected function afterSave()
+    {
+        if ($this->getIsNewRecord()) {
+            $counters = array('post_count' => 1);
+            Weixin::model()->updateCounters($counters, 'id = :wxid', array(':wxid' => $this->weixin_id));
+        }
+    
+        parent::afterSave();
+    }
 }
 
 

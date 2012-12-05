@@ -28,18 +28,18 @@ input[type="submit"].btn-block,input[type="reset"].btn-block,input[type="button"
 .ac {text-align:center;}
 .ar {text-align:right;}
 
-body {margin:0; padding:0; line-height:20px; font-size:14px; color:#333333; font-family:"Hiragino Sans GB",Helvetica,Arial,Sans-serif;}
+body {background:#F2F2F2; margin:0; padding:0; line-height:20px; font-size:14px; color:#333333; font-family:"Hiragino Sans GB",Helvetica,Arial,Sans-serif;}
 a {color:#1F3B7B; text-decoration:none;}
 a:hover {color:#D14836; text-decoration:none;}
 
 header {background:black; overflow:hidden; margin-bottom:10px;}
-header a {width:250px; height:60px; text-indent:-9999px; display:block;}
+header a {width:100%; height:50px; line-height:50px; display:block; color:white; font-size:22px; padding:0 10px;}
 footer {font-size:12px; margin:10px 0 0; background-color:#333; color:#666666; padding:7px;}
 footer a {display:block; color:#CCC; text-align:center;}
 
-.cd-wrapper {background:#F2F2F2; margin:0; padding:0;}
+.cd-wrapper {margin:0; padding:0;}
 .cd-container {margin:0 10px; line-height:24px;}
-.cd-container .cd-title {font-size:20px; margin:5px 0 20px; line-height:20px;}
+.cd-container .cd-title {font-size:20px; margin:5px 0 20px; padding:0 10px; line-height:20px;}
 .cd-container .cd-line1px {height:1px; line-height:1px; font-size:0; background-color:#DFDFDF; margin:15px 0 10px;}
 .cd-box-shadow {-webkit-box-shadow:0px 0px 8px rgba(0, 0, 0, 0.2); box-shadow:0px 0px 8px rgba(0, 0, 0, 0.2);}
 

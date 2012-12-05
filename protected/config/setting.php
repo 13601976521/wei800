@@ -51,6 +51,10 @@ return array(
     'ad_weixin_default_line_show_count' => 0,
     // 记住用户登录状态的cookie时间
     'auto_login_duration' => 3600 * 24 * 7,
+    // 文章简介默认长度
+    'post_summary_len' => 150,
+    // 文章列表每页显示数量
+    'post_list_page_size' => 3,
     
     // default param and value
     'beian_code' => '',

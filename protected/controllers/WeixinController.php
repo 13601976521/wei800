@@ -1,12 +1,6 @@
 <?php
 class WeixinController extends Controller
 {
-    public function init()
-    {
-        parent::init();
-        $this->layout = 'weixin';
-    }
-    
     public function filters()
     {
         return array(
@@ -45,9 +39,7 @@ class WeixinController extends Controller
         );
     
         $datajs = sprintf('var wxdata = %s;', json_encode($shareData));
-        cs()->registerScript('data_jscode', $datajs, CClientScript::POS_END);
-    
-        self::outputStaticCode($post->theme);
+        cs()->registerScript('data_jscode', $datajs, CClientScript::POS_HEAD);
     
         $this->pageTitle = $post->title;
         $this->render('post', array(
@@ -57,29 +49,6 @@ class WeixinController extends Controller
             'lineShowWeixin' => $post->getLineShowWeixin(),
             'gridShowWeixin' => $post->getGridShowWeixin(),
         ));
-    }
-    
-    public static function outputStaticCode($theme = null)
-    {
-        $cssfile = sbp('css/cd-weixin.css');
-        if (file_exists($cssfile) && is_readable($cssfile) && $css = file_get_contents($cssfile))
-            cs()->registerCss('wxcss', $css);
-    
-        $themeCssfile = tbp('css/weixin.css', false, $theme);
-        if (file_exists($themeCssfile) && is_readable($themeCssfile) && $themecss = file_get_contents($themeCssfile))
-            cs()->registerCss('themecss', $themecss);
-    
-        $zeptofile = sbp('libs/zepto.min.js');
-        if (file_exists($zeptofile) && is_readable($zeptofile) && $zeptojs = file_get_contents($zeptofile))
-            cs()->registerScript('zeptojs', $zeptojs, CClientScript::POS_END);
-    
-        $wxfile = sbp('js/weixinapi.js');
-        if (file_exists($wxfile) && is_readable($wxfile) && $wxjs = file_get_contents($wxfile))
-            cs()->registerScript('wxjs', $wxjs, CClientScript::POS_END);
-    
-        $themeJsfile = tbp('js/cweixin.js', false, $theme);
-        if (file_exists($themeJsfile) && is_readable($themeJsfile) && $themejs = file_get_contents($themeJsfile))
-            cs()->registerScript('themejs', $themejs, CClientScript::POS_END);
     }
     
     public function actionViewstats($pid)
@@ -130,27 +99,5 @@ class WeixinController extends Controller
         }
         exit(0);
     }
-    
-    
-    public function actionGh($id)
-    {
-        $this->layout = 'main';
-        
-        $id = (int)$id;
-        if ($id <= 0)
-            throw new CHttpException(503, '非法请求');
-        
-        $weixin = Weixin::model()->findByPk($id);
-        if ($weixin === null)
-            throw new CHttpException(403, '此微信号不存在');
-        
-        $this->setPageKeyWords(array($weixin->wxname, app()->name, '微信运营平台', '微信互推'));
-        $this->setSiteTitle($weixin->wxname);
-        $this->setPageDescription($weixin->desc);
-        $this->render('account', array(
-            'weixin' => $weixin,
-        ));
-    }
-    
 }
 

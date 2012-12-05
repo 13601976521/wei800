@@ -9,6 +9,9 @@
 <meta name="robots" content="all" />
 </head>
 <body>
+<header>
+    <a href="<?php echo CDBase::siteHomeUrl();?>"><strong><?php echo app()->name;?></strong></a>
+</header>
 <div class="cd-wrapper">
 <?php echo $content;?>
 <footer>
@@ -17,3 +20,9 @@
 </div>
 </body>
 </html>
+
+<?php
+cs()->registerScriptFile(sbu('libs/zepto.min.js'), CClientScript::POS_END);
+cs()->registerScriptFile(sbu('js/weixinapi.js'), CClientScript::POS_END);
+cs()->registerCssFile(sbu('css/cd-weixin.css'));
+?>

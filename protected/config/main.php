@@ -34,7 +34,7 @@ return array(
     'basePath' => BETA_CONFIG_ROOT . DS . '..',
     'charset' => 'utf-8',
     'language' => 'zh_CN',
-    'layout' => 'main',
+    'layout' => 'weixin',
     'timezone' => 'Asia/Shanghai',
     'theme' => $params['theme_name'],
 
@@ -122,7 +122,7 @@ return array(
             'rules' => array(
                 '' => 'site/index',
                 'p/<id:\d+>' => 'weixin/post',
-                'gh/<id:\d+>' => 'weixin/gh',
+                'gh/<id:\d+>' => 'site/gh',
                 'weixin/<_a>' => 'weixin/<_a>',
                 '<_a:(login|logout)>' => 'site/<_a>',
             ),
